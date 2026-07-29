@@ -282,19 +282,6 @@
       color:var(--accent);
       font-weight:900;
     }
-    .floating-rail{
-      position:fixed;
-      right:8px;
-      top:34%;
-      z-index:30;
-      display:grid;
-      gap:68px;
-      pointer-events:none;
-    }
-    .floating-rail i{
-      width:8px;height:8px;background:var(--pink);
-      border-radius:50%;box-shadow:0 0 0 3px rgba(255,94,137,.15)
-    }
     .intro-bar{
       background:#fff;
       border-bottom:1px solid var(--line);
@@ -632,7 +619,6 @@
       .hardware-grid{grid-template-columns:repeat(2,1fr)}
       .cases-grid{grid-template-columns:1fr}
       .footer-main{grid-template-columns:1fr}
-      .floating-rail{display:none}
     }
 
 .whatsapp[hidden]{display:none}
