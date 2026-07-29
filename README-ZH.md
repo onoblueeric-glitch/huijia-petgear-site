@@ -11,13 +11,12 @@
 修改以下配置：
 
 - `siteUrl`：最终购买的网站域名
-- `email`：业务邮箱
-- `whatsappNumber`：仅数字的 WhatsApp 号码，包含国家代码
-- `whatsappDisplay`：网站上显示的 WhatsApp 号码
+- `emailContacts`：销售邮箱联系人列表，询盘时随机分配一位
+- `whatsappContacts`：WhatsApp 联系人列表，号码仅使用数字并包含国家代码
 - `videoUrl`：工厂视频或 YouTube 视频地址
 - `formEndpoint`：Formspree、Web3Forms 或公司 CRM/API 的表单接口
 
-当 `formEndpoint` 留空时，询盘表单会调用访客的邮件客户端，将询盘内容发送到配置的业务邮箱。
+当 `formEndpoint` 留空时，询盘表单会随机选择一位销售联系人，并调用访客的邮件客户端发送询盘。当配置了 `formEndpoint` 时，请让接收服务根据 `assignedSalesContact` 和 `assignedSalesEmail` 字段完成邮件路由。
 
 ## 二、替换图片
 

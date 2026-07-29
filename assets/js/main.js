@@ -28,10 +28,15 @@
     if (event.key === "Escape") modal?.classList.remove("active");
   });
 
-  document.querySelectorAll("[data-company-email]").forEach((el) => {
-    el.textContent = config.email || "sales@yourdomain.com";
-    el.href = `mailto:${config.email || "sales@yourdomain.com"}`;
-  });
+  const emailContacts = Array.isArray(config.emailContacts)
+    ? config.emailContacts.filter((contact) =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(contact?.email || ""))
+      )
+    : [];
+  const chooseEmailContact = () => emailContacts.length
+    ? emailContacts[Math.floor(Math.random() * emailContacts.length)]
+    : { name: "HUIJIA PET Sales", email: "sales@yourdomain.com" };
+
   const whatsappContacts = Array.isArray(config.whatsappContacts)
     ? config.whatsappContacts.filter((contact) => /^\d{8,15}$/.test(String(contact?.number || "")))
     : [];
@@ -56,7 +61,7 @@
   });
 
   const serialize = (form) => Object.fromEntries(new FormData(form).entries());
-  const mailtoFallback = (data) => {
+  const mailtoFallback = (data, recipient) => {
     const subject = `RFQ — ${data.product || "Custom Pet Accessories"} — ${data.company || data.name || "Website Lead"}`;
     const body = [
       `Name: ${data.name || ""}`,
@@ -69,7 +74,7 @@
       "Requirements:",
       data.requirements || ""
     ].join("\n");
-    window.location.href = `mailto:${encodeURIComponent(config.email || "sales@yourdomain.com")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${encodeURIComponent(recipient.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   document.querySelectorAll("[data-rfq-form]").forEach((form) => {
@@ -78,18 +83,24 @@
       const status = form.querySelector("[data-form-status]");
       const submit = form.querySelector('button[type="submit"]');
       const data = serialize(form);
+      const assignedEmail = chooseEmailContact();
+      const recipientName = assignedEmail.name || "our sales team";
       submit?.setAttribute("disabled", "disabled");
       if (status) status.textContent = "Sending…";
       try {
         if (!config.formEndpoint) {
-          if (status) status.textContent = config.formErrorMessage || "Opening your email app…";
-          mailtoFallback(data);
+          if (status) status.textContent = `Opening your email app for ${recipientName}…`;
+          mailtoFallback(data, assignedEmail);
           return;
         }
         const response = await fetch(config.formEndpoint, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+          body: JSON.stringify({
+            ...data,
+            assignedSalesContact: recipientName,
+            assignedSalesEmail: assignedEmail.email
+          })
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         if (status) status.textContent = config.formSuccessMessage || "Thank you. We will reply shortly.";
@@ -97,8 +108,8 @@
         if (form.dataset.rfqForm === "quick") setTimeout(() => modal?.classList.remove("active"), 1200);
       } catch (error) {
         console.error(error);
-        if (status) status.textContent = "Online submission failed. Opening your email app…";
-        mailtoFallback(data);
+        if (status) status.textContent = `Online submission failed. Opening your email app for ${recipientName}…`;
+        mailtoFallback(data, assignedEmail);
       } finally {
         submit?.removeAttribute("disabled");
       }

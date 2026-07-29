@@ -7,12 +7,12 @@ Deploy-ready static website for GitHub + Vercel.
 Open `assets/js/site-config.js` and replace:
 
 - `siteUrl`
-- `email`
-- `whatsappNumber` and `whatsappDisplay`
+- `emailContacts`
+- `whatsappContacts`
 - `videoUrl`
 - `formEndpoint`
 
-The default form behavior opens the visitor's email app. For direct online submission, create a Formspree/Web3Forms endpoint and put it in `formEndpoint`, or connect your CRM/API.
+The default form behavior randomly assigns one configured email contact and opens the visitor's email app with a prepared RFQ. If `formEndpoint` is configured, the selected contact name and email are included as `assignedSalesContact` and `assignedSalesEmail` so the receiving service can route the inquiry. For direct online submission, create a Formspree/Web3Forms endpoint or connect your CRM/API.
 
 ## 2. Replace temporary images
 
