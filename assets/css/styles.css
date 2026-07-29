@@ -547,9 +547,12 @@
     }
     .whatsapp{
       position:fixed;right:18px;bottom:18px;z-index:35;
-      width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
-      color:#fff;background:#21c063;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.2);
+      width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+      color:#fff;background:#21c063;box-shadow:0 10px 26px rgba(0,0,0,.24);
+      transition:transform .2s ease,box-shadow .2s ease;
     }
+    .whatsapp:hover{transform:scale(1.06);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+    .whatsapp svg{display:block;width:34px;height:34px;fill:currentColor}
     .modal{
       position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.66);
       display:none;place-items:center;padding:20px
