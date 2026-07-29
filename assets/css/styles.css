@@ -635,6 +635,8 @@
       .floating-rail{display:none}
     }
 
+.whatsapp[hidden]{display:none}
+
 /* Production additions */
 .form-status{grid-column:1/-1;margin:0;min-height:20px;color:var(--muted);font-size:11px}
 button[disabled]{opacity:.65;cursor:not-allowed}
