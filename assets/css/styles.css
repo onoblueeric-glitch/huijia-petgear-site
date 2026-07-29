@@ -533,18 +533,31 @@
     textarea{min-height:115px;resize:vertical}
     input:focus,select:focus,textarea:focus{border-color:var(--accent)}
     footer{background:#080808;color:#d0d0d0}
-    .footer-main{
-      padding:50px 0 38px;
-      display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:38px
-    }
-    footer h4{color:#fff;font-size:12px;margin:0 0 14px}
-    footer p,footer a{font-size:10px;color:#a7a7a7}
-    .footer-links{display:grid;gap:8px}
-    .footer-bottom{
-      border-top:1px solid #242424;
-      min-height:58px;display:flex;align-items:center;justify-content:space-between;
-      font-size:9px;color:#777;
-    }
+    .footer-cta{border-top:1px solid #222;border-bottom:1px solid #242424;background:radial-gradient(circle at 82% 20%,rgba(234,85,54,.16),transparent 28%),#0d0d0d}
+    .footer-cta-inner{min-height:190px;padding:38px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:44px}
+    .footer-kicker{display:block;margin-bottom:8px;color:var(--accent);font-size:10px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+    .footer-cta h2{max-width:650px;margin:0 0 10px;color:#fff;font-size:28px;line-height:1.12}
+    .footer-cta p{max-width:680px;margin:0;color:#aaa;font-size:12px}
+    .footer-cta-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    .footer-whatsapp-cta{min-height:42px;padding:0 20px;border:1px solid #25d366;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;color:#fff;background:#1fae55;font-size:11px;font-weight:800}
+    .footer-whatsapp-cta:hover{color:#fff;background:#189b49}
+    .footer-whatsapp-cta[hidden]{display:none}
+    .footer-main{padding:52px 0 38px;display:grid;grid-template-columns:1.45fr repeat(4,minmax(0,1fr));gap:42px}
+    .footer-brand .brand{margin-bottom:16px}
+    .footer-brand>p{max-width:340px;margin:0;color:#aaa;font-size:12px;line-height:1.65}
+    .footer-contact{display:grid;gap:7px;margin-top:18px}
+    .footer-contact a{color:#fff}
+    .footer-contact span{color:#777;font-size:10px;text-transform:uppercase;letter-spacing:.6px}
+    footer h4{color:#fff;font-size:12px;margin:0 0 16px;text-transform:uppercase;letter-spacing:.7px}
+    footer p,footer a{font-size:11px;color:#aaa}
+    .footer-links{display:grid;gap:11px}
+    .footer-links a{width:max-content;max-width:100%}
+    .footer-links a:hover,.footer-legal a:hover{color:#fff}
+    .footer-capabilities{padding:18px 0;border-top:1px solid #242424;display:flex;align-items:center;justify-content:center;gap:42px;flex-wrap:wrap;color:#999;font-size:10px;font-weight:700;letter-spacing:.55px;text-transform:uppercase}
+    .footer-capabilities span{display:flex;align-items:center;gap:9px}
+    .footer-capabilities span::before{content:"✓";color:var(--accent);font-weight:900}
+    .footer-bottom{border-top:1px solid #242424;min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:10px;color:#777}
+    .footer-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
     .whatsapp{
       position:fixed;right:22px;bottom:22px;z-index:35;
       width:88px;height:88px;border-radius:50%;display:grid;place-items:center;
@@ -599,6 +612,10 @@
       .hero-product-showcase{max-width:620px}
       .products-grid{grid-template-columns:repeat(4,1fr)}
       .custom-layout,.why-grid,.review-wrap,.inquiry-grid{grid-template-columns:1fr}
+      .footer-cta-inner{grid-template-columns:1fr}
+      .footer-cta-actions{justify-content:flex-start}
+      .footer-main{grid-template-columns:repeat(3,1fr)}
+      .footer-brand{grid-column:1/-1}
       .certificate-grid{grid-template-columns:repeat(3,1fr)}
       .cases-grid{grid-template-columns:repeat(3,1fr)}
     }
@@ -627,6 +644,8 @@
       .form-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
       .footer-main{grid-template-columns:1fr 1fr}
+      .footer-bottom{padding:16px 0;align-items:flex-start;flex-direction:column}
+      .footer-capabilities{justify-content:flex-start;gap:14px 24px}
       .intro-bar .container{padding:17px 0;align-items:flex-start;flex-direction:column}
     }
     @media(max-width:460px){
@@ -641,6 +660,8 @@
       .hardware-grid{grid-template-columns:repeat(2,1fr)}
       .cases-grid{grid-template-columns:1fr}
       .footer-main{grid-template-columns:1fr}
+      .footer-cta-actions{align-items:stretch;flex-direction:column}
+      .footer-cta-actions .btn,.footer-whatsapp-cta{width:100%}
     }
 
 .whatsapp[hidden]{display:none}
