@@ -34,11 +34,11 @@
   });
   document.querySelectorAll("[data-company-whatsapp]").forEach((el) => {
     if (!config.whatsappNumber) {
-      el.closest("div")?.remove();
       return;
     }
     el.textContent = config.whatsappDisplay || config.whatsappNumber;
     el.href = `https://wa.me/${config.whatsappNumber}`;
+    el.closest("[data-whatsapp-contact]")?.removeAttribute("hidden");
   });
   document.querySelectorAll("[data-whatsapp-button]").forEach((el) => {
     if (!config.whatsappNumber) {
@@ -46,6 +46,7 @@
       return;
     }
     el.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent("Hello HUIJIA PET, I would like to discuss a custom pet accessories project.")}`;
+    el.hidden = false;
   });
   document.querySelectorAll("[data-current-year]").forEach((el) => {
     el.textContent = `© ${new Date().getFullYear()} ${config.companyName || "HUIJIA PET"}. All rights reserved.`;
