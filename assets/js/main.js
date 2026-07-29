@@ -32,20 +32,23 @@
     el.textContent = config.email || "sales@yourdomain.com";
     el.href = `mailto:${config.email || "sales@yourdomain.com"}`;
   });
-  document.querySelectorAll("[data-company-whatsapp]").forEach((el) => {
-    if (!config.whatsappNumber) {
-      return;
-    }
-    el.textContent = config.whatsappDisplay || config.whatsappNumber;
-    el.href = `https://wa.me/${config.whatsappNumber}`;
-    el.closest("[data-whatsapp-contact]")?.removeAttribute("hidden");
-  });
+  const whatsappContacts = Array.isArray(config.whatsappContacts)
+    ? config.whatsappContacts.filter((contact) => /^\d{8,15}$/.test(String(contact?.number || "")))
+    : [];
+  const assignedWhatsApp = whatsappContacts.length
+    ? whatsappContacts[Math.floor(Math.random() * whatsappContacts.length)]
+    : null;
+
   document.querySelectorAll("[data-whatsapp-button]").forEach((el) => {
-    if (!config.whatsappNumber) {
+    if (!assignedWhatsApp) {
       el.hidden = true;
       return;
     }
-    el.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent("Hello HUIJIA PET, I would like to discuss a custom pet accessories project.")}`;
+    const message = config.whatsappMessage || "Hello HUIJIA PET, I would like to discuss a custom pet accessories project.";
+    const contactName = assignedWhatsApp.name || "HUIJIA PET";
+    el.href = `https://wa.me/${assignedWhatsApp.number}?text=${encodeURIComponent(message)}`;
+    el.setAttribute("aria-label", `Chat with ${contactName} on WhatsApp`);
+    el.title = `WhatsApp: ${contactName}`;
     el.hidden = false;
   });
   document.querySelectorAll("[data-current-year]").forEach((el) => {
