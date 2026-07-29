@@ -90,8 +90,20 @@ const vercel = JSON.parse(await read("vercel.json"));
 const apexRedirect = vercel.redirects?.find((redirect) =>
   redirect.has?.some((condition) => condition.type === "host" && condition.value === "huijiapetgear.com")
 );
-if (!apexRedirect?.permanent || !apexRedirect.destination.startsWith(canonicalOrigin)) {
+if (
+  !apexRedirect?.permanent ||
+  apexRedirect.source !== "/:path*" ||
+  apexRedirect.destination !== `${canonicalOrigin}/:path*`
+) {
   errors.push("vercel.json: permanent apex-to-www redirect is missing or incorrect");
+}
+
+const immutableAssetHeader = vercel.headers?.find((rule) =>
+  rule.source.startsWith("/assets/") &&
+  rule.headers?.some((header) => header.key.toLowerCase() === "cache-control" && /\bimmutable\b/i.test(header.value))
+);
+if (immutableAssetHeader) {
+  errors.push("vercel.json: unhashed assets must not use immutable caching");
 }
 
 if (errors.length) {

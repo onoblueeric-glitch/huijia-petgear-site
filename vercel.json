@@ -3,27 +3,18 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "huijiapetgear.com"
         }
       ],
-      "destination": "https://www.huijiapetgear.com/$1",
+      "destination": "https://www.huijiapetgear.com/:path*",
       "permanent": true
     }
   ],
   "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
     {
       "source": "/(.*)",
       "headers": [
