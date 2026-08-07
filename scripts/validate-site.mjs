@@ -3,7 +3,18 @@ import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const canonicalOrigin = "https://www.huijiapetgear.com";
-const htmlFiles = ["index.html", "404.html", "privacy.html", "terms.html"];
+const htmlFiles = [
+  "index.html",
+  "custom-dog-harness.html",
+  "custom-dog-leash.html",
+  "custom-dog-collar.html",
+  "dog-walking-sets.html",
+  "wholesale-dog-leashes.html",
+  "private-label-dog-gear.html",
+  "404.html",
+  "privacy.html",
+  "terms.html"
+];
 const errors = [];
 
 const read = (path) => readFile(resolve(root, path), "utf8");
