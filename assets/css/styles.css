@@ -626,7 +626,7 @@
     .whatsapp:hover{transform:translateY(-4px) scale(1.04);background:#20b95f;box-shadow:0 18px 42px rgba(16,122,67,.38)}
     .whatsapp:active{transform:translateY(-1px) scale(.97)}
     .whatsapp:focus-visible{outline:3px solid rgba(37,211,102,.36);outline-offset:6px}
-    .whatsapp svg{display:block;width:68px;height:68px;fill:currentColor}
+    .whatsapp svg{display:block;width:62px;height:62px;fill:currentColor;shape-rendering:geometricPrecision}
     @keyframes whatsapp-pop{
       0%{opacity:0;transform:scale(.72)}
       70%{opacity:1;transform:scale(1.06)}
