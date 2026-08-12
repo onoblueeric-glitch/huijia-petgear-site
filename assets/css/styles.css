@@ -487,18 +487,21 @@
     .factory-grid img{width:100%;height:100%;object-fit:cover}
     .factory-grid>.big{min-height:410px}
     .factory-grid .stack img{height:200px}
+    .section-eyebrow{display:block;margin-bottom:10px;text-align:center}
     .gallery-strip{
       display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
     }
     .gallery-card{
-      position:relative;min-height:280px;overflow:hidden;background:#ddd;
+      position:relative;min-height:300px;overflow:hidden;background:#ddd;
     }
-    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:.4s}
+    .gallery-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.4s}
     .gallery-card:hover img{transform:scale(1.04)}
     .gallery-label{
-      position:absolute;left:0;right:0;bottom:0;padding:15px;
-      background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-weight:700
+      position:absolute;left:0;right:0;bottom:0;padding:50px 18px 18px;
+      background:linear-gradient(transparent,rgba(0,0,0,.86));color:#fff
     }
+    .gallery-label strong{display:block;font-size:15px;line-height:1.3}
+    .gallery-label span{display:block;margin-top:6px;font-size:11px;line-height:1.5;font-weight:500;color:rgba(255,255,255,.9)}
     .design-banner{
       position:relative;
       height:380px;
