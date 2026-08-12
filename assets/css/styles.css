@@ -538,12 +538,12 @@
     .quote strong{font-size:11px}
     .video-row{
       border:1px solid var(--line);
-      display:grid;grid-template-columns:1.2fr .8fr;min-height:330px;
+      display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
     }
     .video-cover{
-      position:relative;overflow:hidden;
+      position:relative;overflow:hidden;aspect-ratio:16/9;background:#111;
     }
-    .video-cover img{width:100%;height:100%;object-fit:cover}
+    .factory-video{display:block;width:100%;height:100%;border:0;background:#111}
     .play{
       position:absolute;inset:0;margin:auto;width:64px;height:64px;border:0;border-radius:50%;
       background:var(--accent);color:#fff;font-size:19px;cursor:pointer;
@@ -692,7 +692,7 @@
       .hardware-grid{grid-template-columns:repeat(3,1fr)}
       .factory-grid{grid-template-columns:1fr}
       .video-row{grid-template-columns:1fr}
-      .video-cover{min-height:270px}
+      .video-cover{min-height:0;aspect-ratio:16/9}
       .certificate-grid{grid-template-columns:repeat(2,1fr)}
       .cases-grid{grid-template-columns:repeat(2,1fr)}
       .form-grid{grid-template-columns:1fr}
