@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/custom-dog-harness",
+      "destination": "/custom-dog-harness-manufacturer",
+      "permanent": true
+    },
+    {
+      "source": "/custom-dog-harness.html",
+      "destination": "/custom-dog-harness-manufacturer",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

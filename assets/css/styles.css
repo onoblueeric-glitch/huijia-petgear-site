@@ -783,3 +783,63 @@ button[disabled]{opacity:.65;cursor:not-allowed}
   .design-banner::before{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.7) 62%,rgba(0,0,0,.38) 100%)}
   .design-banner h2{font-size:30px}
 }
+
+/* Custom dog harness manufacturer pillar page */
+.harness-manufacturer-hero{position:relative;overflow:hidden}
+.harness-manufacturer-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 38%,rgba(231,82,99,.15),transparent 34%);pointer-events:none}
+.harness-manufacturer-hero .container{position:relative}
+.seo-hero-actions,.cta-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.buyer-proof{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.buyer-proof span{padding:7px 10px;border:1px solid rgba(255,255,255,.18);color:#d8d8d8;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.section-heading-row{display:grid;grid-template-columns:.88fr 1.12fr;gap:56px;align-items:start;margin-bottom:30px}
+.section-heading-row h2{margin:0;font-size:32px;line-height:1.12;letter-spacing:-.7px}
+.section-heading-row>p{max-width:680px;margin:0;color:#555}
+.section-lead{max-width:720px;margin:-5px 0 28px;color:#555}
+.harness-options-section{background:#f7f7f7}
+.option-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.option-spec-grid article{padding:25px;border:1px solid var(--line);background:#fff}
+.option-spec-grid b{display:block;margin-bottom:9px;color:var(--accent);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.option-spec-grid h3{margin:0 0 9px;font-size:17px;line-height:1.25}
+.option-spec-grid p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.brand-pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.brand-pack-grid figure{position:relative;min-width:0;margin:0;overflow:hidden;background:#111}
+.brand-pack-grid img{display:block;width:100%;aspect-ratio:1.45/1;object-fit:cover;opacity:.92;transition:transform .45s ease}
+.brand-pack-grid figure:hover img{transform:scale(1.02)}
+.brand-pack-grid figcaption{position:absolute;right:0;bottom:0;left:0;padding:42px 25px 22px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.88));color:#fff}
+.brand-pack-grid strong,.brand-pack-grid span{display:block}
+.brand-pack-grid strong{margin-bottom:6px;font-size:18px}
+.brand-pack-grid span{color:#ddd;font-size:11px;line-height:1.55}
+.five-step-process{grid-template-columns:repeat(5,1fr)}
+.purchase-table-wrap{overflow-x:auto;border:1px solid var(--line)}
+.purchase-table{width:100%;border-collapse:collapse;background:#fff;text-align:left}
+.purchase-table th,.purchase-table td{padding:18px 20px;border-bottom:1px solid var(--line);vertical-align:top;font-size:12px;line-height:1.55}
+.purchase-table thead th{background:#171717;color:#fff;font-size:10px;letter-spacing:.8px;text-transform:uppercase}
+.purchase-table tbody th{width:15%;color:var(--accent);font-size:13px}
+.purchase-table tbody tr:last-child th,.purchase-table tbody tr:last-child td{border-bottom:0}
+.purchase-note{margin:18px 0 0!important;padding:16px 18px;border-left:3px solid var(--accent);background:#f7f5f2;color:#555!important;font-size:12px}
+.factory-quality-section{background:#f6f6f6}
+.factory-quality-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:stretch}
+.factory-quality-images{display:grid;grid-template-columns:1.35fr .65fr;gap:10px;min-height:430px}
+.factory-quality-images img{width:100%;height:100%;object-fit:cover}
+.quality-checklist{padding:34px;background:#171717;color:#fff}
+.quality-checklist h3{margin:0 0 20px;font-size:23px;line-height:1.2}
+.quality-checklist ul{list-style:none;display:grid;gap:11px;margin:0 0 22px;padding:0;color:#e2e2e2;font-size:12px}
+.quality-checklist li{position:relative;padding-left:20px}
+.quality-checklist li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:900}
+.quality-checklist p{margin:0;color:#aaa;font-size:11px;line-height:1.6}
+.faq-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:64px;align-items:start}
+.faq-layout h2{margin:6px 0 16px;font-size:32px;line-height:1.12}
+.faq-layout>div>p{color:#555}
+.faq-list{border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{position:relative;padding:20px 42px 20px 0;cursor:pointer;font-size:14px;font-weight:800;list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";position:absolute;right:6px;top:16px;color:var(--accent);font-size:24px;font-weight:400}
+.faq-list details[open] summary::after{content:"−"}
+.faq-list details p{margin:-4px 44px 20px 0;color:#555;font-size:12px;line-height:1.7}
+.related-programs-section{background:#f7f7f7}
+.seo-cta .eyebrow{display:block;margin-bottom:12px}
+.seo-cta .cta-actions{justify-content:center;margin-top:24px}
+@media(max-width:1050px){.five-step-process{grid-template-columns:repeat(3,1fr)}.factory-quality-grid{grid-template-columns:1fr}.factory-quality-images{min-height:380px}}
+@media(max-width:900px){.section-heading-row,.faq-layout{grid-template-columns:1fr;gap:18px}.option-spec-grid{grid-template-columns:repeat(2,1fr)}.five-step-process{grid-template-columns:repeat(2,1fr)}.factory-quality-images{min-height:330px}}
+@media(max-width:620px){.seo-hero-actions,.cta-actions{align-items:stretch;flex-direction:column}.seo-hero-actions .btn,.cta-actions .btn{width:100%}.option-spec-grid,.brand-pack-grid,.five-step-process{grid-template-columns:1fr}.brand-pack-grid img{aspect-ratio:1.18/1}.factory-quality-images{grid-template-columns:1fr;min-height:0}.factory-quality-images img{height:auto;aspect-ratio:1.2/1}.quality-checklist{padding:27px}.purchase-table{min-width:700px}.faq-layout{gap:26px}.faq-layout h2{font-size:28px}}

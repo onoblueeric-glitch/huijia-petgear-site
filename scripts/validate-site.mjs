@@ -6,6 +6,7 @@ const canonicalOrigin = "https://www.huijiapetgear.com";
 const htmlFiles = [
   "index.html",
   "custom-dog-harness.html",
+  "custom-dog-harness-manufacturer.html",
   "custom-dog-leash.html",
   "custom-dog-collar.html",
   "dog-walking-sets.html",
@@ -49,13 +50,24 @@ for (const file of htmlFiles) {
       continue;
     }
 
-    const [path, fragment] = reference.split("#");
+    const [pathAndQuery, fragment] = reference.split("#");
+    const [path] = pathAndQuery.split("?");
     const localPath = path.startsWith("/") ? path.slice(1) : resolve(dirname(file), path).slice(root.length + 1);
     const target = localPath || "index.html";
+    let targetFile = target;
     try {
-      await stat(resolve(root, target));
-      if (fragment && target.endsWith(".html")) {
-        const targetHtml = await read(target);
+      try {
+        await stat(resolve(root, targetFile));
+      } catch {
+        if (!targetFile.includes(".")) {
+          targetFile = `${targetFile}.html`;
+          await stat(resolve(root, targetFile));
+        } else {
+          throw new Error("Missing target");
+        }
+      }
+      if (fragment && targetFile.endsWith(".html")) {
+        const targetHtml = await read(targetFile);
         if (!new RegExp(`\\sid=["']${fragment}["']`).test(targetHtml)) {
           errors.push(`${file}: missing anchor target ${reference}`);
         }
