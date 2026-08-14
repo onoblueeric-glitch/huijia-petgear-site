@@ -800,14 +800,14 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .option-spec-grid b{display:block;margin-bottom:9px;color:var(--accent);font-size:10px;letter-spacing:1px;text-transform:uppercase}
 .option-spec-grid h3{margin:0 0 9px;font-size:17px;line-height:1.25}
 .option-spec-grid p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}
-.brand-pack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.brand-pack-grid figure{position:relative;min-width:0;height:340px;margin:0;overflow:hidden;background:#111}
-.brand-pack-grid img{display:block;width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .45s ease}
-.brand-pack-grid figure:hover img{transform:scale(1.02)}
-.brand-pack-grid figcaption{position:absolute;right:0;bottom:0;left:0;padding:42px 25px 22px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.88));color:#fff}
+.brand-pack-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+.brand-pack-grid figure{min-width:0;margin:0;overflow:hidden;border:1px solid var(--line);background:#fff}
+.brand-pack-grid img{display:block;width:100%;height:360px;object-fit:contain;background:#faf8f5;transition:transform .45s ease}
+.brand-pack-grid figure:hover img{transform:scale(1.012)}
+.brand-pack-grid figcaption{padding:18px 20px 20px;background:#fff;color:#171717}
 .brand-pack-grid strong,.brand-pack-grid span{display:block}
 .brand-pack-grid strong{margin-bottom:6px;font-size:18px}
-.brand-pack-grid span{color:#ddd;font-size:11px;line-height:1.55}
+.brand-pack-grid span{color:var(--muted);font-size:11px;line-height:1.55}
 .five-step-process{grid-template-columns:repeat(5,1fr)}
 .purchase-table-wrap{overflow-x:auto;border:1px solid var(--line)}
 .purchase-table{width:100%;border-collapse:collapse;background:#fff;text-align:left}
@@ -841,7 +841,7 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .seo-cta .cta-actions{justify-content:center;margin-top:24px}
 @media(max-width:1050px){.five-step-process{grid-template-columns:repeat(3,1fr)}.factory-quality-grid{grid-template-columns:1fr}.factory-quality-images{height:340px}}
 @media(max-width:900px){.section-heading-row,.faq-layout{grid-template-columns:1fr;gap:18px}.option-spec-grid{grid-template-columns:repeat(2,1fr)}.five-step-process{grid-template-columns:repeat(2,1fr)}.factory-quality-images{height:320px}}
-@media(max-width:620px){.harness-manufacturer-hero{min-height:auto}.harness-manufacturer-hero-media{object-position:74% center}.harness-manufacturer-hero::before{background:linear-gradient(90deg,rgba(7,7,7,.96) 0%,rgba(7,7,7,.9) 55%,rgba(7,7,7,.72) 100%)}.seo-hero-actions,.cta-actions{align-items:stretch;flex-direction:column}.seo-hero-actions .btn,.cta-actions .btn{width:100%}.option-spec-grid,.brand-pack-grid,.five-step-process{grid-template-columns:1fr}.brand-pack-grid figure{height:290px}.factory-quality-images{grid-template-columns:1fr;height:auto}.factory-quality-images img{height:auto;aspect-ratio:1.2/1}.quality-checklist{padding:27px}.purchase-table{min-width:700px}.faq-layout{gap:26px}.faq-layout h2{font-size:28px}}
+@media(max-width:620px){.harness-manufacturer-hero{min-height:auto}.harness-manufacturer-hero-media{object-position:74% center}.harness-manufacturer-hero::before{background:linear-gradient(90deg,rgba(7,7,7,.96) 0%,rgba(7,7,7,.9) 55%,rgba(7,7,7,.72) 100%)}.seo-hero-actions,.cta-actions{align-items:stretch;flex-direction:column}.seo-hero-actions .btn,.cta-actions .btn{width:100%}.option-spec-grid,.brand-pack-grid,.five-step-process{grid-template-columns:1fr}.brand-pack-grid img{height:290px}.factory-quality-images{grid-template-columns:1fr;height:auto}.factory-quality-images img{height:auto;aspect-ratio:1.2/1}.quality-checklist{padding:27px}.purchase-table{min-width:700px}.faq-layout{gap:26px}.faq-layout h2{font-size:28px}}
 @media(max-width:1080px){.product-portfolio-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.product-portfolio-card img{height:300px}}
 @media(max-width:760px){.product-portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-portfolio-card img{height:280px}}
 @media(max-width:480px){.product-portfolio-grid{grid-template-columns:1fr}.product-portfolio-card img{height:300px}}
