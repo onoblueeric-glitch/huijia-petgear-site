@@ -745,19 +745,14 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .feature-card{padding:24px;border:1px solid var(--line);background:#fff}
 .feature-card h3{margin:0 0 9px;font-size:15px}
 .feature-card p{margin:0;color:var(--muted);font-size:12px}
-.harness-development-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
-.harness-visual-card,.harness-text-card{position:relative;min-height:350px;overflow:hidden;border:1px solid var(--line);background:#fff}
-.harness-visual-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
-.harness-visual-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 55%,rgba(0,0,0,.88) 100%)}
-.harness-visual-card:hover img{transform:scale(1.025)}
-.harness-visual-copy{position:absolute;z-index:1;right:0;bottom:0;left:0;padding:42px 26px 24px;color:#fff}
-.harness-visual-copy h3{margin:0 0 8px;font-size:21px;line-height:1.18}
-.harness-visual-copy p{max-width:360px;margin:0;color:rgba(255,255,255,.88);font-size:12px;line-height:1.55}
-.harness-text-card{display:flex;flex-direction:column;justify-content:center;padding:38px;background:#f7f5f2;border-top:3px solid var(--accent)}
-.harness-text-card span{display:block;margin-bottom:12px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
-.harness-text-card h3{margin:0 0 13px;font-size:24px}
-.harness-text-card p{margin:0 0 22px;color:var(--muted);font-size:13px;line-height:1.65}
-.harness-text-card a{font-size:11px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.product-portfolio-section{background:#f7f7f7}
+.product-portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product-portfolio-card{display:block;min-width:0;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.product-portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
+.product-portfolio-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff;transition:transform .4s ease}
+.product-portfolio-card:hover img{transform:scale(1.018)}
+.product-portfolio-card span{display:block;margin:17px 18px 7px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.product-portfolio-card h3{margin:0 18px 19px;font-size:18px;line-height:1.2}
 .seo-section{padding:62px 0;background:#fafafa}
 .seo-section.white{background:#fff}
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
@@ -772,8 +767,8 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .seo-cta{padding:58px 0;background:#111;color:#fff;text-align:center}
 .seo-cta h2{margin:0 0 10px;font-size:32px}
 .seo-cta p{max-width:650px;margin:0 auto 24px;color:#ccc}
-@media(max-width:900px){.seo-hero-grid,.seo-intro{grid-template-columns:1fr}.feature-grid,.harness-development-grid{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.seo-links{grid-template-columns:1fr}.seo-hero h1{font-size:40px}}
-@media(max-width:620px){.seo-hero{padding:58px 0}.seo-hero h1{font-size:34px}.feature-grid,.harness-development-grid,.process-grid{grid-template-columns:1fr}.harness-visual-card,.harness-text-card{min-height:330px}.harness-text-card{padding:28px}.seo-summary{padding:22px}.seo-content,.seo-section{padding:48px 0}}
+@media(max-width:900px){.seo-hero-grid,.seo-intro{grid-template-columns:1fr}.feature-grid,.product-portfolio-grid{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.seo-links{grid-template-columns:1fr}.seo-hero h1{font-size:40px}}
+@media(max-width:620px){.seo-hero{padding:58px 0}.seo-hero h1{font-size:34px}.feature-grid,.product-portfolio-grid,.process-grid{grid-template-columns:1fr}.seo-summary{padding:22px}.seo-content,.seo-section{padding:48px 0}}
 
 
 /* Compact homepage product engineering banner */
