@@ -749,7 +749,7 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .product-portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .product-portfolio-card{display:block;min-width:0;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
 .product-portfolio-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
-.product-portfolio-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff;transition:transform .4s ease}
+.product-portfolio-card img{display:block;box-sizing:border-box;width:100%;height:360px;padding:10px 10px 0;object-fit:contain;background:#fff;transition:transform .4s ease}
 .product-portfolio-card:hover img{transform:scale(1.018)}
 .product-portfolio-card span{display:block;margin:17px 18px 7px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
 .product-portfolio-card h3{margin:0 18px 19px;font-size:18px;line-height:1.2}
