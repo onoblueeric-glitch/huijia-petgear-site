@@ -785,9 +785,12 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 }
 
 /* Custom dog harness manufacturer pillar page */
-.harness-manufacturer-hero{position:relative;overflow:hidden}
-.harness-manufacturer-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 38%,rgba(231,82,99,.15),transparent 34%);pointer-events:none}
-.harness-manufacturer-hero .container{position:relative}
+.harness-manufacturer-hero{position:relative;display:flex;min-height:560px;align-items:center;overflow:hidden;background:#0d0d0d}
+.harness-manufacturer-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+.harness-manufacturer-hero::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(7,7,7,.98) 0%,rgba(7,7,7,.9) 29%,rgba(7,7,7,.58) 47%,rgba(7,7,7,.12) 68%,rgba(7,7,7,.02) 100%);pointer-events:none}
+.harness-manufacturer-hero .container{position:relative;z-index:2;width:100%}
+.harness-manufacturer-hero .seo-hero-grid{display:block}
+.harness-manufacturer-hero .seo-hero-grid>div{max-width:670px}
 .seo-hero-actions,.cta-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .buyer-proof{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
 .buyer-proof span{padding:7px 10px;border:1px solid rgba(255,255,255,.18);color:#d8d8d8;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
@@ -842,4 +845,4 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .seo-cta .cta-actions{justify-content:center;margin-top:24px}
 @media(max-width:1050px){.five-step-process{grid-template-columns:repeat(3,1fr)}.factory-quality-grid{grid-template-columns:1fr}.factory-quality-images{height:340px}}
 @media(max-width:900px){.section-heading-row,.faq-layout{grid-template-columns:1fr;gap:18px}.option-spec-grid{grid-template-columns:repeat(2,1fr)}.five-step-process{grid-template-columns:repeat(2,1fr)}.factory-quality-images{height:320px}}
-@media(max-width:620px){.seo-hero-actions,.cta-actions{align-items:stretch;flex-direction:column}.seo-hero-actions .btn,.cta-actions .btn{width:100%}.option-spec-grid,.brand-pack-grid,.five-step-process{grid-template-columns:1fr}.brand-pack-grid figure{height:290px}.factory-quality-images{grid-template-columns:1fr;height:auto}.factory-quality-images img{height:auto;aspect-ratio:1.2/1}.quality-checklist{padding:27px}.purchase-table{min-width:700px}.faq-layout{gap:26px}.faq-layout h2{font-size:28px}}
+@media(max-width:620px){.harness-manufacturer-hero{min-height:auto}.harness-manufacturer-hero-media{object-position:68% center}.harness-manufacturer-hero::before{background:linear-gradient(90deg,rgba(7,7,7,.96) 0%,rgba(7,7,7,.9) 55%,rgba(7,7,7,.72) 100%)}.seo-hero-actions,.cta-actions{align-items:stretch;flex-direction:column}.seo-hero-actions .btn,.cta-actions .btn{width:100%}.option-spec-grid,.brand-pack-grid,.five-step-process{grid-template-columns:1fr}.brand-pack-grid figure{height:290px}.factory-quality-images{grid-template-columns:1fr;height:auto}.factory-quality-images img{height:auto;aspect-ratio:1.2/1}.quality-checklist{padding:27px}.purchase-table{min-width:700px}.faq-layout{gap:26px}.faq-layout h2{font-size:28px}}
