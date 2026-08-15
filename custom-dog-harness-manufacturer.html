@@ -21,6 +21,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://www.huijiapetgear.com/#website",
+      "url": "https://www.huijiapetgear.com/",
+      "name": "HUIJIA PET",
+      "publisher": {"@id": "https://www.huijiapetgear.com/#organization"}
+    },
+    {
       "@type": "BreadcrumbList",
       "@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#breadcrumb",
       "itemListElement": [
@@ -39,44 +46,44 @@
       ]
     },
     {
-      "@type": "Product",
-      "@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#product",
-      "name": "OEM and Private-Label Custom Dog Harness",
-      "description": "Custom no-pull, step-in, mesh, neoprene, tactical and outdoor dog harness development for pet brands, wholesalers and distributors.",
-      "image": [
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-dog-harness-manufacturer-private-label-hero.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-turquoise-mesh-no-pull-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-private-label-celestial-padded-vest-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-private-label-daisy-dog-harness-collar-leash-set.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-geometric-step-in-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-private-label-strawberry-dog-harness-walking-set.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-khaki-nylon-adjustable-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-purple-light-up-no-pull-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-pink-padded-y-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-cream-mesh-step-in-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-colorblock-y-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-green-padded-vest-dog-harness.webp",
-        "https://www.huijiapetgear.com/assets/images/huijia-pet-private-label-pink-floral-y-dog-harness.webp"
-      ],
-      "category": "Custom Dog Harnesses",
-      "brand": {
-        "@type": "Brand",
-        "name": "HUIJIA PET"
+      "@type": "Organization",
+      "@id": "https://www.huijiapetgear.com/#organization",
+      "name": "HUIJIA PET",
+      "url": "https://www.huijiapetgear.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.huijiapetgear.com/assets/images/logo.jpg"
       },
-      "manufacturer": {
-        "@type": "Organization",
-        "name": "HUIJIA PET",
-        "url": "https://www.huijiapetgear.com/"
-      },
+      "email": ["Dave@helepets.com", "Andy@helepets.com"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#webpage",
+      "url": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer",
+      "name": "Custom Dog Harness Manufacturer | OEM & Private Label",
+      "description": "Custom dog harness manufacturer for pet brands, wholesalers and distributors. OEM/ODM development, private labeling, sampling, packaging and bulk production.",
+      "isPartOf": {"@id": "https://www.huijiapetgear.com/#website"},
+      "breadcrumb": {"@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#breadcrumb"},
+      "about": {"@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#service"},
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-dog-harness-manufacturer-private-label-hero.webp"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer#service",
+      "name": "OEM and Private-Label Custom Dog Harness Manufacturing",
+      "serviceType": "Custom dog harness design, sampling and bulk manufacturing",
+      "description": "OEM and ODM development for no-pull, step-in, mesh, neoprene, tactical and outdoor dog harness programs for pet brands, wholesalers and distributors.",
+      "url": "https://www.huijiapetgear.com/custom-dog-harness-manufacturer",
+      "image": "https://www.huijiapetgear.com/assets/images/huijia-pet-custom-dog-harness-manufacturer-private-label-hero.webp",
+      "provider": {"@id": "https://www.huijiapetgear.com/#organization"},
+      "areaServed": "Worldwide",
       "audience": {
         "@type": "BusinessAudience",
         "audienceType": "Pet brands, wholesalers and distributors"
-      },
-      "additionalProperty": [
-        {"@type": "PropertyValue", "name": "Customization", "value": "Structure, materials, colors, logo, hardware and packaging"},
-        {"@type": "PropertyValue", "name": "Manufacturing Service", "value": "OEM, ODM, private label and wholesale production"},
-        {"@type": "PropertyValue", "name": "Development", "value": "Sampling, size grading, inspection and export packing"}
-      ]
+      }
     },
     {
       "@type": "FAQPage",
