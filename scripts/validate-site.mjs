@@ -7,6 +7,7 @@ const htmlFiles = [
   "index.html",
   "custom-dog-harness.html",
   "custom-dog-harness-manufacturer.html",
+  "custom-printed-h-style-escape-resistant-dog-harness.html",
   "custom-dog-leash.html",
   "custom-dog-collar.html",
   "dog-walking-sets.html",
