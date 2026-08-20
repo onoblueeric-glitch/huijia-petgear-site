@@ -66,6 +66,7 @@
     const body = [
       `Name: ${data.name || ""}`,
       `Business Email: ${data.email || ""}`,
+      `Phone / WhatsApp: ${data.phone || ""}`,
       `Company: ${data.company || ""}`,
       `Product: ${data.product || ""}`,
       `Estimated Quantity: ${data.quantity || ""}`,
