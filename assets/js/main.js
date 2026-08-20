@@ -37,21 +37,28 @@
     ? emailContacts[Math.floor(Math.random() * emailContacts.length)]
     : { name: "HUIJIA PET Sales", email: "sales@yourdomain.com" };
 
-  const whatsappContacts = Array.isArray(config.whatsappContacts)
-    ? config.whatsappContacts.filter((contact) => /^\d{8,15}$/.test(String(contact?.number || "")))
-    : [];
-  const assignedWhatsApp = whatsappContacts.length
-    ? whatsappContacts[Math.floor(Math.random() * whatsappContacts.length)]
-    : null;
+  const whatsappContact = config.whatsappContact || {};
+  const whatsappNumber = /^\d{8,15}$/.test(String(whatsappContact.number || ""))
+    ? String(whatsappContact.number)
+    : "";
+  const whatsappUrl = /^https:\/\/wa\.me\/\d{8,15}$/.test(String(whatsappContact.url || ""))
+    ? String(whatsappContact.url)
+    : whatsappNumber ? `https://wa.me/${whatsappNumber}` : "";
 
   document.querySelectorAll("[data-whatsapp-button]").forEach((el) => {
-    if (!assignedWhatsApp) {
+    if (!whatsappUrl) {
       el.hidden = true;
       return;
     }
-    const message = config.whatsappMessage || "Hello HUIJIA PET, I would like to discuss a custom pet accessories project.";
-    const contactName = assignedWhatsApp.name || "HUIJIA PET";
-    el.href = `https://wa.me/${assignedWhatsApp.number}?text=${encodeURIComponent(message)}`;
+    const contactName = whatsappContact.name || "HUIJIA PET";
+    const icon = document.createElement("img");
+    icon.src = "/assets/images/whatsapp-logo-official.svg";
+    icon.alt = "";
+    icon.setAttribute("aria-hidden", "true");
+    icon.width = 68;
+    icon.height = 68;
+    el.replaceChildren(icon);
+    el.href = whatsappUrl;
     el.setAttribute("aria-label", `Chat with ${contactName} on WhatsApp`);
     el.title = `WhatsApp: ${contactName}`;
     el.hidden = false;
