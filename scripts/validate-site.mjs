@@ -81,7 +81,19 @@ for (const file of htmlFiles) {
 
   for (const match of html.matchAll(/<script type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/g)) {
     try {
-      JSON.parse(match[1]);
+      const structuredData = JSON.parse(match[1]);
+      const nodes = structuredData["@graph"] ?? [structuredData];
+      for (const node of nodes) {
+        const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
+        if (
+          types.includes("Product") &&
+          !node.offers &&
+          !node.review &&
+          !node.aggregateRating
+        ) {
+          errors.push(`${file}: Product structured data requires a genuine offer, review, or aggregate rating`);
+        }
+      }
     } catch (error) {
       errors.push(`${file}: invalid JSON-LD: ${error.message}`);
     }
