@@ -131,6 +131,14 @@ if (immutableAssetHeader) {
   errors.push("vercel.json: unhashed assets must not use immutable caching");
 }
 
+const walkingSets = await read("dog-walking-sets.html");
+if (walkingSets.includes('"@type":"Product"')) {
+  errors.push("dog-walking-sets.html: collection page must not use Product structured data without a genuine offer or review");
+}
+if (!walkingSets.includes('"@type":"CollectionPage"') || !walkingSets.includes('"@type":"Service"')) {
+  errors.push("dog-walking-sets.html: CollectionPage and manufacturing Service structured data are required");
+}
+
 if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join("\n"));
   process.exitCode = 1;
