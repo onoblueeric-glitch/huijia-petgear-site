@@ -16,6 +16,13 @@
   document.querySelectorAll("[data-open-modal]").forEach((button) => {
     button.addEventListener("click", () => {
       if (!modal) return;
+      const productName = button.dataset.quoteProduct;
+      const productInput = modal.querySelector('input[name="product"]');
+      const requirements = modal.querySelector('textarea[name="requirements"]');
+      if (productName && productInput) productInput.value = productName;
+      if (productName && requirements && !requirements.value.trim()) {
+        requirements.value = `Please quote ${productName}. Quantity: `;
+      }
       modal.classList.add("active");
       modal.querySelector("input")?.focus();
     });

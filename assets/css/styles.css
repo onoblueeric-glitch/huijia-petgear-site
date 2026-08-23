@@ -370,36 +370,30 @@
     .home-product-card{
       min-width:0;
       overflow:hidden;
-      border:1px solid #e1e4e8;
-      border-radius:14px;
-      background:#fff;
-      box-shadow:0 5px 20px rgba(15,23,42,.045);
+      border:1px solid #ded9cf;
+      border-radius:12px;
+      background:#faf8f4;
+      box-shadow:0 6px 22px rgba(34,30,25,.055);
       transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
     }
-    .home-product-card:hover{transform:translateY(-4px);border-color:#cfd5dc;box-shadow:0 14px 32px rgba(15,23,42,.1)}
-    .home-product-media{position:relative;display:block;overflow:hidden;aspect-ratio:1/1;background:#f7f8fa}
+    .home-product-card:hover{transform:translateY(-4px);border-color:#c9b990;box-shadow:0 15px 34px rgba(34,30,25,.11)}
+    .home-product-media{position:relative;display:block;overflow:hidden;aspect-ratio:1/1;background:#f4f1eb;border-bottom:1px solid #e4dfd6}
     .home-product-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
     .home-product-card:hover .home-product-media img{transform:scale(1.025)}
-    .home-product-badge{
-      position:absolute;left:13px;top:13px;z-index:2;
-      display:inline-flex;align-items:center;gap:6px;
-      padding:7px 10px;border-radius:999px;
-      background:#177245;color:#fff;
-      box-shadow:0 5px 14px rgba(23,114,69,.18);
-      font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
-    }
-    .home-product-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#b8f3cf}
-    .home-product-body{padding:18px 17px 19px}
-    .home-product-type{display:block;margin-bottom:7px;color:#8a6529;font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
-    .home-product-card h3{min-height:42px;margin:0 0 8px;font-size:17px;line-height:1.28}
-    .home-product-card h3 a{color:#1e252d;text-decoration:none}
-    .home-product-card h3 a:hover{color:var(--accent)}
-    .home-product-card p{min-height:60px;margin:0;color:var(--muted);font-size:11px;line-height:1.65}
-    .home-product-tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
-    .home-product-tags span{padding:5px 8px;border-radius:999px;background:#f2f5f7;color:#566170;font-size:9px;font-weight:700}
-    .home-product-link{display:flex;align-items:center;justify-content:space-between;padding-top:13px;border-top:1px solid #edf0f2;color:var(--accent);font-size:11px;font-weight:800;text-decoration:none}
-    .home-product-link b{font-size:16px;transition:transform .18s ease}
-    .home-product-link:hover b{transform:translateX(3px)}
+    .home-product-body{display:flex;min-height:286px;flex-direction:column;padding:18px 16px 15px}
+    .home-product-type{align-self:flex-start;display:inline-flex;margin-bottom:10px;padding:5px 9px;border:1px solid #dfd7c7;border-radius:999px;background:#f0ece3;color:#75632f;font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+    .home-product-card h3{min-height:43px;margin:0 0 8px;font-size:17px;line-height:1.28}
+    .home-product-card h3 a{color:#24231f;text-decoration:none}
+    .home-product-card h3 a:hover{color:#8a6a1f}
+    .home-product-card p{min-height:64px;margin:0;color:#68655f;font-size:11px;line-height:1.65}
+    .home-product-specs{display:grid;grid-template-columns:.8fr 1.05fr 1.25fr;margin:16px 0 14px;padding:13px 0;border-top:1px solid #e2ddd3;border-bottom:1px solid #e2ddd3}
+    .home-product-specs div{min-width:0;padding:0 8px;border-right:1px solid #ddd7cc}
+    .home-product-specs div:first-child{padding-left:0}.home-product-specs div:last-child{padding-right:0;border-right:0}
+    .home-product-specs dt{margin:0 0 4px;color:#8a867e;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .home-product-specs dd{margin:0;color:#2c2a25;font-size:10px;font-weight:800;line-height:1.25}
+    .home-product-quote{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:40px;margin-top:auto;border:1px solid #9a7c32;border-radius:6px;background:transparent;color:#80651f;font:800 10px Verdana,Arial,sans-serif;letter-spacing:.01em;cursor:pointer;transition:background-color .18s ease,color .18s ease,box-shadow .18s ease}
+    .home-product-quote span{font-size:14px}.home-product-quote:hover{background:#8a6a1f;color:#fff;box-shadow:0 7px 16px rgba(138,106,31,.18)}
+    .home-product-quote:focus-visible{outline:3px solid rgba(138,106,31,.2);outline-offset:2px}
     .product-card{
       border:1px solid var(--line);
       background:#fff;
