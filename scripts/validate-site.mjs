@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname, "..");
 const canonicalOrigin = "https://www.huijiapetgear.com";
 const htmlFiles = [
   "index.html",
+  "custom-dog-harness-manufacturer.html",
   "wholesale-dog-harnesses-in-stock.html",
   "custom-printed-h-style-escape-resistant-dog-harness.html",
   "custom-dog-leash.html",
