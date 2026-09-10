@@ -138,8 +138,22 @@
       document.getElementById("factory")?.scrollIntoView({ behavior: "smooth" });
     }
   });
-})();
+  document.querySelectorAll("[data-lazy-youtube]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const videoId = button.dataset.lazyYoutube;
+      if (!/^[\w-]{11}$/.test(videoId || "")) return;
+      const iframe = document.createElement("iframe");
+      iframe.className = "factory-video";
+      iframe.title = "Inside HUIJIA PET's custom dog harness, collar and leash factory";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`;
+      button.replaceWith(iframe);
+    }, { once: true });
+  });
 
+})();
 
 /* Product gallery thumbnails */
 document.querySelectorAll("[data-product-gallery]").forEach(function(gallery){
