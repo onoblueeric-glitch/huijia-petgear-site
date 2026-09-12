@@ -1,0 +1,4 @@
+interface:
+  display_name: "B2B SEO GEO AI Auditor"
+  short_description: "Score B2B sites, research missing evidence, and produce prioritized SEO/GEO/AI improvements."
+  default_prompt: "Audit the supplied website or page using the fixed SEO, GEO, AI Recommendation, and evidence-confidence rubric. Research current public information, identify knowledge-base gaps without inventing private company facts, and return prioritized implementation actions."
