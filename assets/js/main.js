@@ -36,8 +36,7 @@
   });
 
   const fallbackEmailContacts = [
-    { name: "Dave", email: "Dave@helepets.com" },
-    { name: "Andy", email: "Andy@helepets.com" }
+    { name: "Sales Team", email: "andy@huijiapetgear.com" }
   ];
   const configuredEmailContacts = Array.isArray(config.emailContacts)
     ? config.emailContacts.filter((contact) =>
@@ -45,7 +44,7 @@
       )
     : [];
   const emailContacts = configuredEmailContacts.length ? configuredEmailContacts : fallbackEmailContacts;
-  const chooseEmailContact = () => emailContacts[Math.floor(Math.random() * emailContacts.length)];
+  const chooseEmailContact = () => emailContacts[0];
 
   const whatsappContact = config.whatsappContact || {};
   const whatsappNumber = /^\d{8,15}$/.test(String(whatsappContact.number || ""))
@@ -60,7 +59,6 @@
       el.hidden = true;
       return;
     }
-    const contactName = whatsappContact.name || "HUIJIA PET";
     const icon = document.createElement("img");
     icon.src = "/assets/images/whatsapp-logo-official.svg";
     icon.alt = "";
@@ -69,8 +67,8 @@
     icon.height = 68;
     el.replaceChildren(icon);
     el.href = whatsappUrl;
-    el.setAttribute("aria-label", `Chat with ${contactName} on WhatsApp`);
-    el.title = `WhatsApp: ${contactName}`;
+    el.setAttribute("aria-label", "Chat on WhatsApp");
+    el.title = `WhatsApp: ${whatsappContact.display || whatsappNumber}`;
     el.hidden = false;
   });
   document.querySelectorAll("[data-current-year]").forEach((el) => {
