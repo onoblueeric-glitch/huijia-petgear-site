@@ -2,8 +2,7 @@ window.HUIJIA_SITE_CONFIG = {
   companyName: "HUIJIA PET",
   siteUrl: "https://www.huijiapetgear.com",
   emailContacts: [
-    { name: "Dave", email: "Dave@helepets.com" },
-    { name: "Andy", email: "Andy@helepets.com" }
+    { name: "Andy", email: "andy@huijiapetgear.com" }
   ],
   whatsappContact: {
     name: "Andy Liu",

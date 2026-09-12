@@ -42,7 +42,7 @@
     : [];
   const chooseEmailContact = () => emailContacts.length
     ? emailContacts[Math.floor(Math.random() * emailContacts.length)]
-    : { name: "HUIJIA PET Sales", email: "sales@yourdomain.com" };
+    : { name: "HUIJIA PET Sales", email: "andy@huijiapetgear.com" };
 
   const whatsappContact = config.whatsappContact || {};
   const whatsappNumber = /^\d{8,15}$/.test(String(whatsappContact.number || ""))
