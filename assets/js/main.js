@@ -35,14 +35,17 @@
     if (event.key === "Escape") modal?.classList.remove("active");
   });
 
-  const emailContacts = Array.isArray(config.emailContacts)
+  const fallbackEmailContacts = [
+    { name: "Dave", email: "Dave@helepets.com" },
+    { name: "Andy", email: "Andy@helepets.com" }
+  ];
+  const configuredEmailContacts = Array.isArray(config.emailContacts)
     ? config.emailContacts.filter((contact) =>
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(contact?.email || ""))
       )
     : [];
-  const chooseEmailContact = () => emailContacts.length
-    ? emailContacts[Math.floor(Math.random() * emailContacts.length)]
-    : { name: "HUIJIA PET Sales", email: "andy@huijiapetgear.com" };
+  const emailContacts = configuredEmailContacts.length ? configuredEmailContacts : fallbackEmailContacts;
+  const chooseEmailContact = () => emailContacts[Math.floor(Math.random() * emailContacts.length)];
 
   const whatsappContact = config.whatsappContact || {};
   const whatsappNumber = /^\d{8,15}$/.test(String(whatsappContact.number || ""))
