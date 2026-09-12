@@ -1,22 +1,9 @@
-import { readFile, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const canonicalOrigin = "https://www.huijiapetgear.com";
-const htmlFiles = [
-  "index.html",
-  "custom-dog-harness-manufacturer.html",
-  "wholesale-dog-harnesses-in-stock.html",
-  "custom-printed-h-style-escape-resistant-dog-harness.html",
-  "custom-dog-leash.html",
-  "custom-dog-collar.html",
-  "dog-walking-sets.html",
-  "wholesale-dog-leashes.html",
-  "private-label-dog-gear.html",
-  "404.html",
-  "privacy.html",
-  "terms.html"
-];
+const htmlFiles = (await readdir(root)).filter((file) => file.endsWith(".html")).sort();
 const errors = [];
 
 const read = (path) => readFile(resolve(root, path), "utf8");
