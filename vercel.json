@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/custom-dog-harness",
+      "destination": "/custom-dog-harness-manufacturer",
+      "permanent": true
+    },
+    {
+      "source": "/custom-y-shape-dog-harness",
+      "destination": "/custom-dog-harness-manufacturer",
+      "permanent": true
+    },
+    {
+      "source": "/custom-step-in-dog-harness",
+      "destination": "/custom-dog-harness-manufacturer",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
