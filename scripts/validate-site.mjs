@@ -152,6 +152,16 @@ if (
   errors.push("vercel.json: permanent apex-to-www redirect is missing or incorrect");
 }
 
+const wholesaleLeashRedirect = vercel.redirects?.find((redirect) =>
+  redirect.source === "/wholesale-dog-leashes"
+);
+if (
+  !wholesaleLeashRedirect?.permanent ||
+  wholesaleLeashRedirect.destination !== "/custom-dog-leash"
+) {
+  errors.push("vercel.json: permanent wholesale leash consolidation redirect is missing or incorrect");
+}
+
 const immutableAssetHeader = vercel.headers?.find((rule) =>
   rule.source.startsWith("/assets/") &&
   rule.headers?.some((header) => header.key.toLowerCase() === "cache-control" && /\bimmutable\b/i.test(header.value))
@@ -168,11 +178,20 @@ if (!walkingSets.includes('"@type":"CollectionPage"') || !walkingSets.includes('
   errors.push("dog-walking-sets.html: CollectionPage and manufacturing Service structured data are required");
 }
 
-for (const file of ["private-label-dog-gear.html", "wholesale-dog-leashes.html"]) {
-  const html = htmlByFile.get(file) ?? "";
-  if (!html.includes('"@type": "WebPage"') || !html.includes('"@type": "Service"')) {
-    errors.push(`${file}: WebPage and Service structured data are required`);
-  }
+const privateLabel = htmlByFile.get("private-label-dog-gear.html") ?? "";
+if (!privateLabel.includes('"@type": "WebPage"') || !privateLabel.includes('"@type": "Service"')) {
+  errors.push("private-label-dog-gear.html: WebPage and Service structured data are required");
+}
+if ((privateLabel.match(/class="product-portfolio-card/g) ?? []).length < 9) {
+  errors.push("private-label-dog-gear.html: at least six product visuals and three proof visuals are required");
+}
+
+const customLeash = htmlByFile.get("custom-dog-leash.html") ?? "";
+if (!customLeash.includes("Custom &amp; Wholesale Dog Leash Manufacturer")) {
+  errors.push("custom-dog-leash.html: combined custom and wholesale positioning is required");
+}
+if (sitemap.includes("/wholesale-dog-leashes")) {
+  errors.push("sitemap.xml: redirected wholesale leash URL must not remain in the sitemap");
 }
 
 const hStyleHarness = htmlByFile.get("custom-printed-h-style-escape-resistant-dog-harness.html") ?? "";
