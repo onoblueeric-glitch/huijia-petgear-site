@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname, "..");
 const canonicalOrigin = "https://www.huijiapetgear.com";
 const htmlFiles = (await readdir(root)).filter((file) => file.endsWith(".html")).sort();
 const errors = [];
+const htmlByFile = new Map();
 
 const read = (path) => readFile(resolve(root, path), "utf8");
 
@@ -26,8 +27,33 @@ for (const file of ["package.json", "vercel.json"]) {
 
 for (const file of htmlFiles) {
   const html = await read(file);
+  htmlByFile.set(file, html);
   const ids = new Set([...html.matchAll(/\sid=["']([^"']+)["']/g)].map((match) => match[1]));
   const references = [...html.matchAll(/\s(?:href|src)=["']([^"']+)["']/g)].map((match) => match[1]);
+
+  const descriptionTag = html.match(/<meta\b[^>]*\bname=["']description["'][^>]*>/i)?.[0];
+  const description = descriptionTag?.match(/\bcontent=(["'])(.*?)\1/i)?.[2];
+  if (description && description.length > 160) {
+    errors.push(`${file}: meta description is ${description.length} characters; keep it at 160 or fewer`);
+  }
+
+  const stylesheetPaths = [...html.matchAll(/<link\b[^>]*>/gi)]
+    .map((match) => match[0])
+    .filter((tag) => /\brel=["']stylesheet["']/i.test(tag))
+    .map((tag) => tag.match(/\bhref=["']([^"']+)["']/i)?.[1])
+    .filter(Boolean)
+    .map((href) => href.split("?")[0]);
+  for (const stylesheet of new Set(stylesheetPaths)) {
+    if (stylesheetPaths.filter((path) => path === stylesheet).length > 1) {
+      errors.push(`${file}: duplicate stylesheet request for ${stylesheet}`);
+    }
+  }
+
+  for (const [logoTag] of html.matchAll(/<img\b[^>]*\bsrc=["'][^"']*logo\.jpg["'][^>]*>/gi)) {
+    if (!/\bwidth=["']\d+["']/i.test(logoTag) || !/\bheight=["']\d+["']/i.test(logoTag)) {
+      errors.push(`${file}: logo image must include explicit width and height`);
+    }
+  }
 
   for (const reference of references) {
     if (/^(?:https?:|mailto:|data:)/.test(reference)) continue;
@@ -68,18 +94,10 @@ for (const file of htmlFiles) {
   for (const match of html.matchAll(/<script type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/g)) {
     try {
       const structuredData = JSON.parse(match[1]);
-      const nodes = structuredData["@graph"] ?? [structuredData];
-      for (const node of nodes) {
-        const types = Array.isArray(node["@type"]) ? node["@type"] : [node["@type"]];
-        if (
-          types.includes("Product") &&
-          !node.offers &&
-          !node.review &&
-          !node.aggregateRating
-        ) {
-          errors.push(`${file}: Product structured data requires a genuine offer, review, or aggregate rating`);
-        }
-      }
+      // Quote-only B2B product pages may use Product semantics without a public
+      // price, review, or aggregate rating. Never add unsupported Offer or
+      // review data merely to qualify for a Google rich result.
+      void (structuredData["@graph"] ?? [structuredData]);
     } catch (error) {
       errors.push(`${file}: invalid JSON-LD: ${error.message}`);
     }
@@ -103,9 +121,22 @@ const sitemap = await read("sitemap.xml");
 if (!sitemap.startsWith("<?xml") || !sitemap.includes("<urlset") || !sitemap.includes("</urlset>")) {
   errors.push("sitemap.xml: required XML document structure is missing");
 }
-for (const [, location] of sitemap.matchAll(/<loc>(.*?)<\/loc>/g)) {
+const sitemapLocations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+for (const location of sitemapLocations) {
   if (!location.startsWith(`${canonicalOrigin}/`)) {
     errors.push(`sitemap.xml: non-canonical URL ${location}`);
+  }
+}
+
+for (const location of sitemapLocations) {
+  const path = new URL(location).pathname.replace(/\/$/, "") || "/";
+  if (path === "/") continue;
+  const targetFile = `${path.slice(1)}.html`;
+  const inboundSources = [...htmlByFile.entries()].filter(([file, html]) =>
+    file !== targetFile && new RegExp(`href=["']${path}(?:[#?][^"']*)?["']`).test(html)
+  );
+  if (!inboundSources.length) {
+    errors.push(`${targetFile}: sitemap URL has no internal link from another HTML page`);
   }
 }
 
@@ -135,6 +166,21 @@ if (walkingSets.includes('"@type":"Product"')) {
 }
 if (!walkingSets.includes('"@type":"CollectionPage"') || !walkingSets.includes('"@type":"Service"')) {
   errors.push("dog-walking-sets.html: CollectionPage and manufacturing Service structured data are required");
+}
+
+for (const file of ["private-label-dog-gear.html", "wholesale-dog-leashes.html"]) {
+  const html = htmlByFile.get(file) ?? "";
+  if (!html.includes('"@type": "WebPage"') || !html.includes('"@type": "Service"')) {
+    errors.push(`${file}: WebPage and Service structured data are required`);
+  }
+}
+
+const hStyleHarness = htmlByFile.get("custom-printed-h-style-escape-resistant-dog-harness.html") ?? "";
+if (!hStyleHarness.includes('"@type":"Product"') || !hStyleHarness.includes('"sku":"H-T01"')) {
+  errors.push("custom-printed-h-style-escape-resistant-dog-harness.html: Product schema with SKU H-T01 is required");
+}
+if (hStyleHarness.includes('"serviceType":"Ready-stock printed H-style dog harness')) {
+  errors.push("custom-printed-h-style-escape-resistant-dog-harness.html: physical product must not use Service properties");
 }
 
 if (errors.length) {
