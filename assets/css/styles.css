@@ -1546,3 +1546,30 @@ button[disabled]{opacity:.65;cursor:not-allowed}
   .pairui-catalog-page .stock-product-card h3{font-size:17px}
   .pairui-catalog-page .stock-product-card p{font-size:14px}
 }
+
+/* Custom harness catalogue: keep the clean grid while restoring buying facts and detail-page links. */
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-buy{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin:12px 0 9px;
+  padding:10px 0 0;
+  border-top:1px solid #e7e7e7;
+}
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-buy span{
+  color:#747474;
+  font:500 12px/1.4 Arial,sans-serif;
+}
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-buy strong{
+  color:#a8660b;
+  font:700 12px/1.4 Arial,sans-serif;
+}
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#ad6b0c;
+  font:700 13px/1.45 Arial,sans-serif;
+}
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-link:hover{color:#155f9b}
+.custom-harness-page.pairui-catalog-page .custom-product-card .stock-card-link b{font-size:15px}
