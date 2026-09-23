@@ -38,7 +38,7 @@
 .home-page .hero-actions .text-link { border: 0; font-size: 14px; gap: 12px; }
 .collection-hero-copy > p.hero-note { margin: 32px 0 0; font-size: 12px; color: #777476; letter-spacing: .15px; }
 .collection-hero-visual { display: block; position: relative; background: #f7f7f5; overflow: hidden; min-height: 520px; }
-.collection-hero-visual > img { width: 100%; height: 100%; aspect-ratio: 1.1; object-fit: cover; }
+.collection-hero-visual > img { width: 100%; height: 100%; aspect-ratio: 1.1; object-fit: contain; padding: 12px 12px 48px; }
 .collection-hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(0deg, rgb(248 248 246 / 98%), rgb(248 248 246 / 0%)); }
 .collection-hero-caption div { display: grid; gap: 3px; }
 .collection-hero-caption div > span { color: #69676a; font-size: 12px; }
