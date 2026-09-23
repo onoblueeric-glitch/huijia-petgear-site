@@ -900,7 +900,7 @@ button[disabled]{opacity:.65;cursor:not-allowed}
 .stock-review-note{margin-top:12px!important;color:#6f7882!important;font-size:10px!important;line-height:1.55!important}
 .process-custom-link{margin:18px 0 0;color:#5b6470;font-size:12px;line-height:1.6}
 .process-custom-link a{color:#155f9b;font-weight:800}
-.form-delivery-note{margin:0!important;color:#77808a!important;font-size:9px!important;line-height:1.45!important}
+.form-delivery-note{margin:0;color:#595959;font-size:13px;line-height:1.6}
 .faq-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:64px;align-items:start}
 .faq-layout h2{margin:6px 0 16px;font-size:32px;line-height:1.12}
 .faq-layout>div>p{color:#555}

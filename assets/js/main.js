@@ -52,6 +52,29 @@
     });
   }
 
+  let modalTrigger = null;
+  let generatedRequirements = "";
+  let modalBackground = [];
+  let previousBodyOverflow = "";
+  const modalFocusTargets = () => modal ? [...modal.querySelectorAll(
+    'a[href], button, input:not([type="hidden"]), select, textarea, [tabindex]'
+  )].filter((element) =>
+    element instanceof HTMLElement && element.tabIndex >= 0 &&
+    !element.matches(":disabled") && !element.closest('[hidden], [inert], [aria-hidden="true"]') &&
+    element.getClientRects().length > 0 && getComputedStyle(element).visibility !== "hidden"
+  ) : [];
+  const closeModal = () => {
+    if (!modal?.classList.contains("active")) return;
+    modal.classList.remove("active");
+    modalBackground.forEach(({ element, inert }) => { element.inert = inert; });
+    modalBackground = [];
+    document.body.style.overflow = previousBodyOverflow;
+    if (modalTrigger?.isConnected && !modalTrigger.closest("[inert]")) {
+      modalTrigger.focus({ preventScroll: true });
+    }
+    modalTrigger = null;
+  };
+
   document.querySelectorAll("[data-open-modal]").forEach((button) => {
     button.addEventListener("click", () => {
       if (!modal) return;
@@ -59,19 +82,57 @@
       const productInput = modal.querySelector('input[name="product"]');
       const requirements = modal.querySelector('textarea[name="requirements"]');
       if (productName && productInput) productInput.value = productName;
-      if (productName && requirements && !requirements.value.trim()) {
-        requirements.value = `Please quote ${productName}. Quantity: `;
+      if (productName && requirements && (!requirements.value.trim() || requirements.value === generatedRequirements)) {
+        generatedRequirements = `Please quote ${productName}. Quantity: `;
+        requirements.value = generatedRequirements;
       }
-      modal.classList.add("active");
-      modal.querySelector("input")?.focus();
+      if (!modal.classList.contains("active")) {
+        modalTrigger = button;
+        previousBodyOverflow = document.body.style.overflow;
+        // Preserve existing inert states, including when the dialog is nested.
+        for (let branch = modal; branch.parentElement && branch !== document.body; branch = branch.parentElement) {
+          [...branch.parentElement.children].forEach((element) => {
+            if (element === branch || !(element instanceof HTMLElement)) return;
+            modalBackground.push({ element, inert: element.inert });
+            element.inert = true;
+          });
+        }
+        document.body.style.overflow = "hidden";
+        modal.classList.add("active");
+      }
+      const focusTargets = modalFocusTargets();
+      (focusTargets.find((element) => element.matches('input[name="name"]')) || focusTargets[0])?.focus();
     });
   });
-  modalClose?.addEventListener("click", () => modal?.classList.remove("active"));
+  modalClose?.addEventListener("click", closeModal);
   modal?.addEventListener("click", (event) => {
-    if (event.target === modal) modal.classList.remove("active");
+    if (event.target === modal) closeModal();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") modal?.classList.remove("active");
+    if (!modal?.classList.contains("active")) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeModal();
+    } else if (event.key === "Tab") {
+      // Recalculate because inquiry delivery links may be added after opening.
+      const focusTargets = modalFocusTargets();
+      const first = focusTargets[0];
+      const last = focusTargets[focusTargets.length - 1];
+      if (!first) {
+        event.preventDefault();
+        return;
+      }
+      if (!focusTargets.includes(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   const fallbackEmailContacts = [
