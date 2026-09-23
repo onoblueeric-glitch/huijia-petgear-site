@@ -76,61 +76,109 @@
   });
 
   const serialize = (form) => Object.fromEntries(new FormData(form).entries());
-  const mailtoFallback = (data, recipient) => {
-    const subject = `RFQ — ${data.product || "Custom Pet Accessories"} — ${data.company || data.name || "Website Lead"}`;
-    const body = [
-      `Name: ${data.name || ""}`,
-      `Business Email: ${data.email || ""}`,
-      `Phone / WhatsApp: ${data.phone || ""}`,
-      `Company: ${data.company || ""}`,
-      `Product: ${data.product || ""}`,
-      `Estimated Quantity: ${data.quantity || ""}`,
-      `Target Market: ${data.market || ""}`,
-      "",
-      "Requirements:",
-      data.requirements || ""
-    ].join("\n");
-    window.location.href = `mailto:${encodeURIComponent(recipient.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const forms = [...document.querySelectorAll("[data-rfq-form]")];
+  let onlineDelivery = false;
+  const endpoint = config.formEndpoint || "";
+  const setMode = (available) => {
+    onlineDelivery = available;
+    forms.forEach((form) => {
+      const submit = form.querySelector('button[type="submit"]');
+      if (submit) submit.textContent = available ? "Send Inquiry" : "Prepare Inquiry";
+      const note = form.querySelector(".form-delivery-note");
+      if (note) note.textContent = available
+        ? "Send your requirements directly to our sales team."
+        : "Prepare your inquiry, then choose email or WhatsApp to send it.";
+    });
   };
-
-  document.querySelectorAll("[data-rfq-form]").forEach((form) => {
+  const inquiryText = (data) => [
+    `Product: ${data.product || "Dog walking gear"}`,
+    `Name: ${data.name || ""}`,
+    `Business Email: ${data.email || ""}`,
+    `Phone / WhatsApp: ${data.phone || ""}`,
+    `Company: ${data.company || ""}`,
+    `Quantity: ${data.quantity || ""}`,
+    `Target Market: ${data.market || ""}`,
+    "", "Requirements:", data.requirements || ""
+  ].join("\n");
+  const showDeliveryChoices = (form, data, message) => {
+    const status = form.querySelector("[data-form-status]");
+    if (!status) return;
+    status.replaceChildren(document.createTextNode(message));
+    const actions = document.createElement("span");
+    actions.className = "form-delivery-actions";
+    const body = inquiryText(data);
+    const mail = document.createElement("a");
+    mail.className = "btn btn-primary";
+    mail.textContent = "Open Email Draft";
+    mail.href = `mailto:${encodeURIComponent(chooseEmailContact().email)}?subject=${encodeURIComponent(`RFQ — ${data.product || "Dog walking gear"}`)}&body=${encodeURIComponent(body)}`;
+    actions.append(mail);
+    if (whatsappUrl) {
+      const chat = document.createElement("a");
+      chat.className = "btn btn-outline";
+      chat.textContent = "Open WhatsApp";
+      chat.href = `${whatsappUrl}?text=${encodeURIComponent(body)}`;
+      chat.target = "_blank";
+      chat.rel = "noopener noreferrer";
+      actions.append(chat);
+    }
+    status.append(actions);
+  };
+  forms.forEach((form) => {
+    const trap = document.createElement("input");
+    trap.name = "website";
+    trap.type = "text";
+    trap.tabIndex = -1;
+    trap.autocomplete = "off";
+    trap.className = "rfq-honeypot";
+    trap.setAttribute("aria-hidden", "true");
+    form.append(trap);
+    for (const [name, length] of Object.entries({ name:100, email:254, phone:80, company:160, product:200, quantity:100, market:120, requirements:6000 })) {
+      const field = form.elements.namedItem(name);
+      if (field && ["INPUT", "TEXTAREA"].includes(field.tagName)) field.maxLength = length;
+    }
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (form.dataset.submitting === "true" || !form.reportValidity()) return;
+      const data = serialize(form);
       const status = form.querySelector("[data-form-status]");
       const submit = form.querySelector('button[type="submit"]');
-      const data = serialize(form);
-      const assignedEmail = chooseEmailContact();
-      const recipientName = assignedEmail.name || "our sales team";
+      if (!onlineDelivery) {
+        showDeliveryChoices(form, data, "Your inquiry is ready. It has not been sent yet. Choose email or WhatsApp and send the prepared message there.");
+        return;
+      }
+      form.dataset.submitting = "true";
       submit?.setAttribute("disabled", "disabled");
-      if (status) status.textContent = "Sending…";
+      if (status) status.textContent = "Sending your inquiry…";
       try {
-        if (!config.formEndpoint) {
-          if (status) status.textContent = `Opening your email app for ${recipientName}…`;
-          mailtoFallback(data, assignedEmail);
-          return;
-        }
-        const response = await fetch(config.formEndpoint, {
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...data,
-            assignedSalesContact: recipientName,
-            assignedSalesEmail: assignedEmail.email
-          })
+          body: JSON.stringify(data),
+          signal: AbortSignal.timeout(20000)
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        if (status) status.textContent = config.formSuccessMessage || "Thank you. We will reply shortly.";
+        const result = await response.json();
+        if (!response.ok || result.ok !== true) throw new Error("Delivery not confirmed");
+        if (status) status.textContent = config.formSuccessMessage || "Your inquiry has been submitted. Thank you.";
         form.reset();
-        if (form.dataset.rfqForm === "quick") setTimeout(() => modal?.classList.remove("active"), 1200);
-      } catch (error) {
-        console.error(error);
-        if (status) status.textContent = `Online submission failed. Opening your email app for ${recipientName}…`;
-        mailtoFallback(data, assignedEmail);
+      } catch {
+        showDeliveryChoices(form, data, "We could not confirm online delivery. Your details are still here. You can send the prepared inquiry by email or WhatsApp.");
       } finally {
+        form.dataset.submitting = "false";
         submit?.removeAttribute("disabled");
       }
     });
+    form.addEventListener("input", () => {
+      const status = form.querySelector("[data-form-status]");
+      if (status && form.dataset.submitting !== "true") status.replaceChildren();
+    });
   });
+  setMode(false);
+  if (endpoint && forms.length) {
+    fetch(endpoint, { headers: { "Accept": "application/json" }, cache: "no-store", signal: AbortSignal.timeout(3500) })
+      .then(response => response.ok ? response.json() : null)
+      .then(result => setMode(result?.available === true))
+      .catch(() => setMode(false));
+  }
 
   document.querySelector("[data-video-button]")?.addEventListener("click", () => {
     if (config.videoUrl) {

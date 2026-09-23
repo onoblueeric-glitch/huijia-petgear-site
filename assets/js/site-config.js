@@ -10,6 +10,6 @@ window.HUIJIA_SITE_CONFIG = {
     url: "https://wa.me/8617679297660"
   },
   videoUrl: "",
-  formEndpoint: "",
-  formSuccessMessage: "Thank you. We will reply within one business day."
+  formEndpoint: "/api/rfq",
+  formSuccessMessage: "Your inquiry has been submitted to HUIJIA PET. Thank you."
 };
