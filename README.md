@@ -12,7 +12,7 @@ Open `assets/js/site-config.js` and replace:
 - `videoUrl`
 - `formEndpoint`
 
-The default form behavior randomly assigns one configured email contact and opens the visitor's email app with a prepared RFQ. If `formEndpoint` is configured, the selected contact name and email are included as `assignedSalesContact` and `assignedSalesEmail` so the receiving service can route the inquiry. For direct online submission, create a Formspree/Web3Forms endpoint or connect your CRM/API.
+Forms use the Vercel `/api/rfq` endpoint when SMTP is configured. Until then, visitors explicitly choose a prepared email or WhatsApp message. All inquiries route to the single configured sales contact. See [INQUIRY-SETUP.md](INQUIRY-SETUP.md) for server-side setup and the inbox acceptance check.
 
 ## 2. Replace temporary images
 

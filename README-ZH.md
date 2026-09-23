@@ -11,12 +11,12 @@
 修改以下配置：
 
 - `siteUrl`：最终购买的网站域名
-- `emailContacts`：销售邮箱联系人列表，询盘时随机分配一位
+- `emailContacts`：唯一销售邮箱联系人
 - `whatsappContacts`：WhatsApp 联系人列表，号码仅使用数字并包含国家代码
 - `videoUrl`：工厂视频或 YouTube 视频地址
-- `formEndpoint`：Formspree、Web3Forms 或公司 CRM/API 的表单接口
+- `formEndpoint`：在线询盘接口（当前为 /api/rfq）
 
-当 `formEndpoint` 留空时，询盘表单会随机选择一位销售联系人，并调用访客的邮件客户端发送询盘。当配置了 `formEndpoint` 时，请让接收服务根据 `assignedSalesContact` 和 `assignedSalesEmail` 字段完成邮件路由。
+在线询盘接口部署于 Vercel。SMTP 尚未配置时，访客可生成邮件或 WhatsApp 草稿并自行发送；配置后仅在邮件服务器接受询盘时显示提交成功。配置步骤见 INQUIRY-SETUP.md。
 
 ## 二、替换图片
 
