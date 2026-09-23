@@ -44,7 +44,7 @@
 .home-page .btn{min-height:44px;border-radius:5px;font-size:13px}
 .home-page .home-daisy-hero{min-height:490px;padding:46px 0}
 .home-page .home-daisy-hero .hero-content{width:45%;max-width:520px}
-.home-page .home-daisy-hero h1{font-size:clamp(36px,3.2vw,47px);line-height:1.1;letter-spacing:-1.5px;text-wrap:balance}
+.home-page .home-daisy-hero h1{font-size:clamp(36px,3.2vw,47px);line-height:1.1;letter-spacing:-1.5px;text-wrap:wrap}
 .home-page .home-daisy-hero p{font-size:15px;max-width:440px}
 .home-page .hero-actions{gap:12px}
 .home-page .home-factory-proof{background:#f0f3ed;border-color:#e2e7dc}
