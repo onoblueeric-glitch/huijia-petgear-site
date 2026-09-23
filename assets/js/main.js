@@ -7,9 +7,48 @@
   const modalClose = document.getElementById("modalClose");
 
   if (mobileToggle && menu) {
+    mobileToggle.setAttribute("aria-controls", menu.id);
+    const closeMenu = () => {
+      menu.classList.remove("open");
+      mobileToggle.setAttribute("aria-expanded", "false");
+    };
     mobileToggle.addEventListener("click", () => {
       const open = menu.classList.toggle("open");
       mobileToggle.setAttribute("aria-expanded", String(open));
+    });
+    menu.addEventListener("click", (event) => {
+      if (event.target.closest("a")) closeMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.classList.contains("open")) {
+        closeMenu();
+        mobileToggle.focus();
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target) && !mobileToggle.contains(event.target)) closeMenu();
+    });
+  }
+
+  const homeFilters = document.querySelector(".home-product-filters");
+  const homeCards = [...document.querySelectorAll(".home-product-card[data-product-category]")];
+  if (homeFilters && homeCards.length) {
+    const filterButtons = [...homeFilters.querySelectorAll("[data-home-filter]")];
+    const count = homeFilters.querySelector(".home-filter-count");
+    homeFilters.hidden = false;
+    const fallback = document.querySelector("[data-home-category-fallback]");
+    if (fallback) fallback.hidden = true;
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.homeFilter;
+        let visible = 0;
+        homeCards.forEach((card) => {
+          card.hidden = category !== "all" && card.dataset.productCategory !== category;
+          if (!card.hidden) visible++;
+        });
+        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        if (count) count.textContent = `${visible} styles`;
+      });
     });
   }
 
