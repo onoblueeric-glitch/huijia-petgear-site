@@ -39,3 +39,6 @@
  .resource-grid{gap:27px}.resource-card{grid-template-columns:1fr;gap:20px;padding-bottom:25px}.resource-card-image img{aspect-ratio:1.5}.resource-card-copy{padding:0 2px}.resource-card h3{font-size:27px}.resource-card-description{font-size:14px;max-width:none;margin-bottom:17px}.resource-card-tag{display:inline;font-size:10px}.resource-read{font-size:12px}.resource-download{padding:23px;grid-template-columns:1fr;gap:18px}.resource-download-icon{display:none}.resource-download>.resource-dark-button{grid-column:1;width:100%}.guide-related-links{grid-template-columns:1fr}.guide-related-links a{flex-direction:row;align-items:center}.guide-related-links a span{margin:0}
 }
 @media(prefers-reduced-motion:reduce){.resource-card-image img{transition:none}}
+
+/* Keep the complete product reference visible in new selection guides. */
+.resource-card-image img.resource-product-photo,.guide-header-figure img.resource-product-photo{object-fit:contain;background:#fff}
