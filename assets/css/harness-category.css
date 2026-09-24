@@ -1,4 +1,4 @@
-/* Harness category: an isolated layout, with the shared brand shell retained. */
+/* Shared collection layout, initially developed for the harness category. */
 .harness-ui {
   --harness-paper: #f7f5f2;
   --harness-line: #e4dfda;
@@ -88,6 +88,7 @@
 .harness-ui .harness-material-detail-media img { position: absolute; display: block; max-width: none; height: auto; }
 .harness-ui .harness-material-detail-mesh img { width: 222.222%; left: -6.296%; top: -44.444%; }
 .harness-ui .harness-material-detail-hardware img { width: 234.375%; left: -123.047%; top: -625%; }
+.harness-ui .category-material-detail-product img { width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: 50% 80%; }
 .harness-ui .harness-material-image figcaption { margin-top: 9px; color: #635d56; font-size: 12px; line-height: 1.5; }
 .harness-ui .option-spec-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
 .harness-ui .option-spec-grid article { padding: 0 0 20px; border: 0; border-bottom: 1px solid #dbd4cd; background: transparent; }
@@ -118,6 +119,9 @@
 .harness-ui .harness-order-tiers strong { display: block; margin: 18px 0 10px; font-size: 36px; font-weight: 500; line-height: 1; letter-spacing: -1px; }
 .harness-ui .harness-order-tiers strong span { color: #6d635a; font-size: 15px; letter-spacing: 0; }
 .harness-ui .harness-order-tiers p { margin: 0; color: var(--harness-muted); font-size: 12px; line-height: 1.65; }
+.harness-ui .category-order-tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.harness-ui .category-order-value { font-size: 30px; line-height: 1.15; }
+.harness-ui .harness-purchase-details + .harness-purchase-details { border-top: 0; }
 .harness-ui .harness-lead-times { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 24px 0; }
 .harness-ui .harness-lead-times p { display: flex; flex-direction: column; gap: 7px; margin: 0; color: var(--harness-muted); font-size: 13px; line-height: 1.65; }
 .harness-ui .harness-lead-times strong { color: #282421; font-size: 14px; }
@@ -249,6 +253,7 @@
   .harness-ui .purchase-table td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: #63574e; font-weight: 600; font-size: 11px; }
 }
 @media (max-width: 480px) {
+  .harness-ui .category-order-tiers { grid-template-columns: 1fr; }
   .harness-ui .harness-material-heading { margin-bottom: 24px; }
   .harness-ui .harness-material-visual { grid-template-columns: 1fr; gap: 16px; }
   .harness-ui .harness-material-specs { grid-template-columns: 1fr; gap: 20px; }

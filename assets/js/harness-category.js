@@ -30,4 +30,19 @@
   section.querySelectorAll('[data-harness-reset], [data-harness-clear]').forEach(button => {
     button.addEventListener('click', clearFilters);
   });
+
+  // Product reference links can point to a collapsed specification table.
+  const revealSpecifications = () => {
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+    const target = id && document.getElementById(id);
+    if (!target) return;
+    const disclosure = target.closest('.harness-purchase-details');
+    if (disclosure) {
+      disclosure.open = true;
+      target.scrollIntoView({ block: 'start' });
+    }
+  };
+  window.addEventListener('hashchange', revealSpecifications);
+  revealSpecifications();
 })();
