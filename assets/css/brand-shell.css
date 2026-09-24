@@ -1,4 +1,13 @@
 /* Shared HUIJIA identity. Load after the base stylesheet and page styles. */
+/* Contextual buyer guides complement product and service information. */
+.buyer-guide-strip { padding: 35px 0; background: #f5f4ef; border-top: 1px solid #e1e2dc; }
+.buyer-guide-strip > .container { display: grid; grid-template-columns: minmax(230px,.8fr) minmax(0,1.2fr); gap: 34px; align-items: center; }
+.buyer-guide-strip h2 { margin: 6px 0 0; font-size: 22px; line-height: 1.35; font-weight: 600; letter-spacing: -.35px; }
+.buyer-guide-strip > .container > div > span { color: #716c62; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.buyer-guide-links { display: grid; gap: 12px; }
+.buyer-guide-links a { display: flex; justify-content: space-between; gap: 15px; padding: 13px 0; border-bottom: 1px solid #d9dbd2; color: #7e3b2c; font-size: 14px; line-height: 1.5; }
+.buyer-guide-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) { .buyer-guide-strip > .container { grid-template-columns: 1fr; gap: 20px; } }
 :root {
   --huijia-accent: #db5d46;
   --huijia-accent-ink: #b83c29;
@@ -312,3 +321,5 @@ footer .footer-legal a { color: #cccccc; font-size: 12px; }
   .btn,
   .whatsapp { transition: none; }
 }
+
+@media (min-width: 1101px) and (max-width: 1200px) { .site-header .main-nav { gap: 18px; } .site-header .nav-row { gap: 22px; } }
