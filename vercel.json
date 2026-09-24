@@ -3,11 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/custom-dog-harness.html",
-      "destination": "/custom-dog-harness-manufacturer",
-      "permanent": true
-    },
-    {
       "source": "/wholesale-dog-leashes",
       "destination": "/custom-dog-leash",
       "permanent": true
