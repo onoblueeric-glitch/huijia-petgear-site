@@ -69,6 +69,7 @@
 .guide-content { min-width: 0; font-size: 16px; line-height: 1.8; }
 .guide-figure { margin: 0 0 35px; }
 .guide-figure img { width: 100%; height: auto; aspect-ratio: 2.35; object-fit: cover; object-position: center 54%; background: #f6f5f1; border-radius: 3px; }
+.guide-figure-product img { object-fit: contain; }
 .guide-figure figcaption { font-size: 12px; color: #777d74; line-height: 1.65; padding-top: 10px; }
 .guide-content > section { scroll-margin-top: 105px; margin-bottom: 40px; }
 .guide-content h2 { font-size: 27px; line-height: 1.35; font-weight: 600; letter-spacing: -.55px; margin: 0 0 18px; }

@@ -7,7 +7,10 @@
   const count = document.querySelector('[data-resource-count]');
   controls.hidden = false;
   const topics = document.querySelector('.resource-topics');
-  if (topics && window.matchMedia('(max-width: 760px)').matches) topics.open = false;
+  const narrowScreen = window.matchMedia('(max-width: 760px)');
+  const setTopicDisplay = () => { if (topics) topics.open = !narrowScreen.matches; };
+  setTopicDisplay();
+  narrowScreen.addEventListener('change', setTopicDisplay);
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const selected = button.dataset.resourceFilter;
