@@ -179,10 +179,12 @@ if (!walkingSets.includes('"@type":"CollectionPage"') || !walkingSets.includes('
 }
 
 const privateLabel = htmlByFile.get("private-label-dog-gear.html") ?? "";
-if (!privateLabel.includes('"@type": "WebPage"') || !privateLabel.includes('"@type": "Service"')) {
+if (!/"@type"\s*:\s*"WebPage"/.test(privateLabel) || !/"@type"\s*:\s*"Service"/.test(privateLabel)) {
   errors.push("private-label-dog-gear.html: WebPage and Service structured data are required");
 }
-if ((privateLabel.match(/class="product-portfolio-card/g) ?? []).length < 9) {
+const privateLabelProducts = privateLabel.match(/<article\b[^>]*\bstock-product-card\b[\s\S]*?<\/article>/g) ?? [];
+const privateLabelSupportingContent = privateLabel.replace(/<article\b[^>]*\bstock-product-card\b[\s\S]*?<\/article>/g, "").match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "";
+if (privateLabelProducts.filter(card => /<img\b/.test(card)).length < 6 || (privateLabelSupportingContent.match(/<img\b/g) ?? []).length < 3) {
   errors.push("private-label-dog-gear.html: at least six product visuals and three proof visuals are required");
 }
 
