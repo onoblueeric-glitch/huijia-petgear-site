@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "npx serve . -l 3000",
-    "check": "node --check assets/js/site-config.js && node --check assets/js/main.js && node --check api/rfq.js && node --check lib/rfq.js && node scripts/validate-site.mjs",
+    "sync:shell": "node scripts/sync-shell.mjs",
+    "build": "npm run sync:shell && npm run check",
+    "check": "node scripts/sync-shell.mjs --check && node --check assets/js/site-config.js && node --check assets/js/main.js && node --check api/rfq.js && node --check lib/rfq.js && node scripts/validate-site.mjs",
     "test": "node --test scripts/test-rfq.cjs"
   },
   "dependencies": {

@@ -21,6 +21,20 @@
   --brand-green-dark: var(--huijia-accent-dark);
 }
 
+/* Page typography must not change the shared navigation or footer. */
+.topbar,
+.site-header,
+.site-footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+}
+.site-header,
+.site-footer { font-size: 14px; line-height: 1.55; }
+
 .topbar {
   min-height: 28px;
   background: #000000;
@@ -129,7 +143,14 @@ footer .brand span:last-child { display: block; }
   color: var(--huijia-accent);
 }
 .site-header .nav-actions { gap: 12px; margin-left: auto; flex-shrink: 0; }
-.site-header .nav-actions .btn { min-height: 42px; padding: 0 18px; font-size: 13px; border-radius: 3px; }
+.site-header .nav-actions .btn {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 3px;
+  font: 600 13px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
 .site-header .icon-btn {
   width: 44px;
   height: 44px;
