@@ -16,6 +16,9 @@
     views.forEach(view => view.setAttribute('aria-pressed', String(view === button)));
     images.forEach(image => {
       const source = productView ? image.dataset.productSrc : image.dataset.onPetSrc;
+      const srcset = productView ? '' : (image.dataset.onPetSrcset || '');
+      if (srcset) image.setAttribute('srcset', srcset);
+      else image.removeAttribute('srcset');
       if (image.getAttribute('src') !== source) image.src = source;
       image.alt = productView ? image.dataset.productAlt : image.dataset.onPetAlt;
     });

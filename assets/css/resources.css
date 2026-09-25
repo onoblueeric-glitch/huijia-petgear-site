@@ -1,4 +1,4 @@
-@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/InterVariable.woff2') format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/InterVariable-latin-8dfbdcec40.woff2') format('woff2')}
 .resources-page{--r-ink:#232722;--r-muted:#666d63;--r-line:#e0e3da;color:var(--r-ink);background:#fff}
 .resources-page main{font-family:Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .resource-container{width:min(1200px,calc(100% - 64px));margin:auto}

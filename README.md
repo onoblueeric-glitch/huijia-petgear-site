@@ -32,6 +32,17 @@ Vercel serves these synchronized pages using the existing static deployment sett
 Navigation stays in the static HTML, including when JavaScript is disabled.
 `assets/css/brand-shell.css` is loaded last with a content-based cache version.
 
+Product photos use responsive 800px delivery copies and the original files for
+larger displays. With Pillow installed, `python scripts/optimize-images.py`
+regenerates these copies and updates the static image attributes; then run the
+shell synchronization and validation commands above. Keep `srcset` in sync when
+adding gallery controls or product/on-pet switches. Changed JS and CSS URLs must
+receive a new content version so returning visitors load the updated behavior.
+
+The resource pages use a Latin subset of the original Inter variable font. The
+source font remains in `assets/fonts/InterVariable.woff2`; the delivery file keeps
+the same weights and shapes, with normal browser fallback for other scripts.
+
 Open `index.html` directly, or run:
 
 ```bash

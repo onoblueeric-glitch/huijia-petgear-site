@@ -177,10 +177,8 @@
 
   const serialize = (form) => Object.fromEntries(new FormData(form).entries());
   const forms = [...document.querySelectorAll("[data-rfq-form]")];
-  let onlineDelivery = false;
   const endpoint = config.formEndpoint || "";
   const setMode = (available) => {
-    onlineDelivery = available;
     forms.forEach((form) => {
       const submit = form.querySelector('button[type="submit"]');
       if (submit) submit.textContent = available ? "Send Inquiry" : "Prepare Inquiry";
@@ -189,6 +187,22 @@
         ? "Send your requirements directly to our sales team."
         : "Prepare your inquiry, then choose email or WhatsApp to send it.";
     });
+  };
+  let deliveryCheck;
+  const checkDeliveryMode = () => {
+    if (!endpoint || !forms.length) return Promise.resolve(false);
+    if (!deliveryCheck) {
+      deliveryCheck = fetch(endpoint, {
+        headers: { "Accept": "application/json" },
+        cache: "no-store",
+        signal: AbortSignal.timeout(3500)
+      })
+        .then(response => response.ok ? response.json() : null)
+        .then(result => result?.available === true)
+        .catch(() => false)
+        .then(available => { setMode(available); return available; });
+    }
+    return deliveryCheck;
   };
   const inquiryText = (data) => [
     `Product: ${data.product || "Dog walking gear"}`,
@@ -242,14 +256,15 @@
       const data = serialize(form);
       const status = form.querySelector("[data-form-status]");
       const submit = form.querySelector('button[type="submit"]');
-      if (!onlineDelivery) {
-        showDeliveryChoices(form, data, "Your inquiry is ready. It has not been sent yet. Choose email or WhatsApp and send the prepared message there.");
-        return;
-      }
       form.dataset.submitting = "true";
       submit?.setAttribute("disabled", "disabled");
-      if (status) status.textContent = "Sending your inquiry…";
+      if (status) status.textContent = "Preparing your inquiry…";
       try {
+        if (!await checkDeliveryMode()) {
+          showDeliveryChoices(form, data, "Your inquiry is ready. It has not been sent yet. Choose email or WhatsApp and send the prepared message there.");
+          return;
+        }
+        if (status) status.textContent = "Sending your inquiry…";
         const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Accept": "application/json", "Content-Type": "application/json" },
@@ -274,10 +289,17 @@
   });
   setMode(false);
   if (endpoint && forms.length) {
-    fetch(endpoint, { headers: { "Accept": "application/json" }, cache: "no-store", signal: AbortSignal.timeout(3500) })
-      .then(response => response.ok ? response.json() : null)
-      .then(result => setMode(result?.available === true))
-      .catch(() => setMode(false));
+    // Avoid starting a serverless request while the first screen is loading.
+    forms.forEach(form => form.addEventListener("focusin", checkDeliveryMode, { once: true }));
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          observer.disconnect();
+          checkDeliveryMode();
+        }
+      }, { rootMargin: "300px" });
+      forms.forEach(form => observer.observe(form));
+    }
   }
 
   document.querySelector("[data-video-button]")?.addEventListener("click", () => {
@@ -313,7 +335,12 @@ document.querySelectorAll("[data-product-gallery]").forEach(function(gallery){
     button.addEventListener("click",function(){
       var nextSrc=button.getAttribute("data-src");
       var nextAlt=button.getAttribute("data-alt")||"";
-      if(nextSrc){mainImage.src=nextSrc;mainImage.alt=nextAlt}
+      if(nextSrc){
+        var nextSrcset=button.getAttribute("data-srcset");
+        if(nextSrcset)mainImage.setAttribute("srcset",nextSrcset);
+        else mainImage.removeAttribute("srcset");
+        mainImage.src=nextSrc;mainImage.alt=nextAlt;
+      }
       thumbs.forEach(function(item){item.classList.remove("is-active")});
       button.classList.add("is-active");
     });
