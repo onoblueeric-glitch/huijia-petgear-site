@@ -26,9 +26,10 @@ Verify and replace all sample figures and claims, including founding year, years
 
 The announcement bar, header, menu, and footer use `partials/site-header.html` and
 `partials/site-footer.html`, based on the leash category page. Edit those shared
-templates rather than individual pages, then run `npm run sync:shell`.
-`npm run build` synchronizes all root HTML pages and validates them before Vercel
-publishes. Navigation stays in the static HTML, including when JavaScript is disabled.
+templates rather than individual pages, then run `npm run sync:shell` followed by
+`npm run check` before committing. Commit the generated HTML alongside the templates.
+Vercel serves these synchronized pages using the existing static deployment settings.
+Navigation stays in the static HTML, including when JavaScript is disabled.
 `assets/css/brand-shell.css` is loaded last with a content-based cache version.
 
 Open `index.html` directly, or run:
