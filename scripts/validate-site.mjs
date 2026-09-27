@@ -1,5 +1,6 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { productSnippetIssues } from "./product-snippet-policy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const canonicalOrigin = "https://www.huijiapetgear.com";
@@ -94,10 +95,7 @@ for (const file of htmlFiles) {
   for (const match of html.matchAll(/<script type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/g)) {
     try {
       const structuredData = JSON.parse(match[1]);
-      // Quote-only B2B product pages may use Product semantics without a public
-      // price, review, or aggregate rating. Never add unsupported Offer or
-      // review data merely to qualify for a Google rich result.
-      void (structuredData["@graph"] ?? [structuredData]);
+      errors.push(...productSnippetIssues(structuredData).map(issue => `${file}: ${issue}`));
     } catch (error) {
       errors.push(`${file}: invalid JSON-LD: ${error.message}`);
     }
@@ -197,8 +195,8 @@ if (sitemap.includes("/wholesale-dog-leashes")) {
 }
 
 const hStyleHarness = htmlByFile.get("custom-printed-h-style-escape-resistant-dog-harness.html") ?? "";
-if (!hStyleHarness.includes('"@type":"Product"') || !hStyleHarness.includes('"sku":"H-T01"')) {
-  errors.push("custom-printed-h-style-escape-resistant-dog-harness.html: Product schema with SKU H-T01 is required");
+if (!hStyleHarness.includes('"@type":"WebPage"') || !hStyleHarness.includes('<strong>H-T01</strong>')) {
+  errors.push("custom-printed-h-style-escape-resistant-dog-harness.html: WebPage metadata and visible model H-T01 are required");
 }
 if (hStyleHarness.includes('"serviceType":"Ready-stock printed H-style dog harness')) {
   errors.push("custom-printed-h-style-escape-resistant-dog-harness.html: physical product must not use Service properties");
