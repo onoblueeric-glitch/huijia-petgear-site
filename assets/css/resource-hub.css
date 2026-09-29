@@ -8,7 +8,9 @@
 .resource-hub .hub-intro h1{font-size:clamp(29px,2.7vw,36px);line-height:1.2;letter-spacing:-1px;font-weight:600;margin:0 0 15px}
 .resource-hub .hub-intro p{max-width:940px;font-size:15px;line-height:1.75;color:#5a6155;margin:0}
 .hub-library{min-width:0}
-.resource-hub main[data-enhanced] .hub-library{display:grid;grid-template-columns:250px minmax(0,1fr);gap:30px;align-items:start}
+.resource-hub .hub-library{display:grid;grid-template-columns:250px minmax(0,1fr);gap:30px;align-items:start}
+.resource-hub main .hub-sidebar[hidden]{display:block!important;visibility:hidden}
+.resource-hub main .hub-sort[hidden]{display:flex!important;visibility:hidden}
 .hub-sidebar{position:sticky;top:108px;min-width:0}
 .hub-filter-panel{padding:22px 20px;border:1px solid var(--hub-line);border-radius:10px;background:#fff;box-shadow:0 3px 13px #28251c05}
 .hub-filter-panel>summary{display:none}
@@ -21,6 +23,7 @@
 .hub-search:focus-within{border-color:var(--hub-accent);box-shadow:0 0 0 1px var(--hub-accent)}
 .hub-search svg{width:16px;height:16px;flex-shrink:0;color:#81867a}
 .hub-search input{min-width:0;width:100%;margin:0;padding:11px 0;border:0;border-radius:0;background:transparent;color:var(--hub-ink);font:14px/1.5 Inter,Arial,sans-serif;outline:none;box-shadow:none}
+.resource-hub .hub-search input:focus-visible{outline:none}
 .hub-search input::placeholder{color:#858b7b;opacity:1}
 .hub-topics{border:0;padding:0;margin:0;min-width:0}
 .hub-topics legend{font-size:12px;font-weight:600;color:#32382c;padding:0;margin-bottom:11px}
@@ -45,7 +48,7 @@
 .resource-hub .resource-card:hover{border-color:#cbb8ac;box-shadow:0 4px 15px #31251c08}
 .resource-hub .resource-card-image{display:block;border-radius:0;overflow:hidden;background:#f0efeb;border-bottom:1px solid #eeeee8}
 .resource-hub .resource-card-image img{display:block;width:100%;height:auto;aspect-ratio:1.5;object-fit:cover;transition:transform .3s ease}
-.resource-hub .resource-card-image img.hub-cover-collar{object-position:50% 60%}
+.resource-hub .resource-card-image img.hub-cover-collar{object-position:50% 35%}
 .resource-hub .resource-card-image img.hub-cover-leash{object-position:50% 30%}
 .resource-hub .resource-card-image:hover img{transform:scale(1.025)}
 .resource-hub .resource-card-copy{display:flex;flex:1;flex-direction:column;align-items:flex-start;padding:20px 18px 15px;min-width:0}
@@ -86,7 +89,7 @@
 .hub-contact-actions .hub-button{min-width:176px}
 .hub-contact-actions>a:not(.hub-button){font-size:12px;line-height:1.7;color:#596849;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:1100px){
- .resource-hub main[data-enhanced] .hub-library{grid-template-columns:228px minmax(0,1fr);gap:25px}
+ .resource-hub .hub-library{grid-template-columns:228px minmax(0,1fr);gap:25px}
  .hub-filter-panel{padding:20px 17px}
  .hub-topic{font-size:12px;gap:8px}
  .resource-hub .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -100,7 +103,8 @@
  .resource-hub .hub-intro{padding:22px 0 27px}
  .resource-hub .hub-intro h1{font-size:31px;line-height:1.2;letter-spacing:-.9px;margin-bottom:14px}
  .resource-hub .hub-intro p{font-size:14px;line-height:1.75}
- .resource-hub main[data-enhanced] .hub-library{grid-template-columns:1fr;gap:23px}
+ .resource-hub .hub-library{grid-template-columns:1fr;gap:23px}
+ .hub-sidebar[hidden] .hub-filter-body{display:none}
  .hub-sidebar{position:static}
  .hub-filter-panel{padding:0;box-shadow:none;border-radius:6px}
  .hub-filter-panel>summary{display:flex;align-items:center;justify-content:space-between;list-style:none;min-height:48px;padding:14px 17px;background:var(--hub-paper);font-size:13px;line-height:1.5;font-weight:500;cursor:pointer}
