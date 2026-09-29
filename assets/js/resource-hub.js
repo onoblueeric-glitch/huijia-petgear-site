@@ -1,44 +1,73 @@
 (() => {
   'use strict';
-  const controls = document.querySelector('[data-resource-filters]');
-  const cards = [...document.querySelectorAll('.resource-card[data-topic]')];
-  if (!controls || !cards.length) return;
+  const root = document.querySelector('[data-resource-hub]');
+  const grid = root?.querySelector('#resource-guides');
+  const cards = [...(grid?.querySelectorAll('.resource-card[data-topic]') || [])];
+  if (!root || !grid || !cards.length) return;
 
-  const buttons = [...controls.querySelectorAll('[data-resource-filter]')];
-  const search = document.querySelector('[data-resource-search]');
-  const searchRegion = document.querySelector('[data-resource-search-region]');
-  const count = document.querySelector('[data-resource-count]');
-  const empty = document.querySelector('[data-resource-empty]');
-  const searchable = cards.map(card => ({card, text: card.textContent.toLocaleLowerCase()}));
-  let selected = 'all';
+  const filters = [...root.querySelectorAll('[data-resource-topic]')];
+  const sortButtons = [...root.querySelectorAll('[data-resource-sort]')];
+  const resets = [...root.querySelectorAll('[data-resource-reset]')];
+  const search = root.querySelector('[data-resource-search]');
+  const count = root.querySelector('[data-resource-count]');
+  const empty = root.querySelector('[data-resource-empty]');
+  const clear = root.querySelector('[data-resource-clear]');
+  const panel = root.querySelector('[data-resource-panel]');
+  const narrow = window.matchMedia('(max-width: 760px)');
+  const normalize = value => value.toLocaleLowerCase().replace(/[-–—]/g, ' ');
+  const items = cards.map((card, index) => ({
+    card,
+    index,
+    topic: card.dataset.topic,
+    published: card.dataset.published || '',
+    text: normalize(`${card.textContent} ${card.dataset.search || ''}`),
+  }));
+  let sort = 'newest';
 
   const update = () => {
-    const terms = (search?.value || '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-    let visible = 0;
-    searchable.forEach(({card, text}) => {
-      card.hidden = (selected !== 'all' && card.dataset.topic !== selected) || !terms.every(term => text.includes(term));
-      if (!card.hidden) visible++;
+    const selected = new Set(filters.filter(input => input.checked).map(input => input.value));
+    const terms = normalize(search?.value || '').trim().split(/\s+/).filter(Boolean);
+    const ordered = [...items].sort((a, b) => {
+      const dateOrder = a.published.localeCompare(b.published);
+      return (sort === 'oldest' ? dateOrder : -dateOrder) || a.index - b.index;
     });
-    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.resourceFilter === selected)));
-    if (count) count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guides'}${terms.length ? ' matching your search' : ''}`;
+    let visible = 0;
+    ordered.forEach(item => {
+      const matches = (!selected.size || selected.has(item.topic)) && terms.every(term => item.text.includes(term));
+      item.card.hidden = !matches;
+      if (matches) visible++;
+      grid.append(item.card);
+    });
+    sortButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.resourceSort === sort)));
+    if (count) count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guides'}`;
     if (empty) empty.hidden = visible !== 0;
+    if (clear) clear.disabled = selected.size === 0 && !terms.length;
   };
 
-  controls.hidden = false;
-  if (searchRegion) searchRegion.hidden = false;
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      selected = button.dataset.resourceFilter;
-      update();
-    });
+  filters.forEach(input => {
+    const badge = input.closest('label')?.querySelector('[data-topic-count]');
+    if (badge) badge.textContent = String(items.filter(item => item.topic === input.value).length);
+    input.addEventListener('change', update);
   });
   search?.addEventListener('input', update);
   search?.addEventListener('search', update);
-  document.querySelector('[data-resource-reset]')?.addEventListener('click', () => {
-    selected = 'all';
+  sortButtons.forEach(button => button.addEventListener('click', () => {
+    sort = button.dataset.resourceSort;
+    update();
+  }));
+  resets.forEach(button => button.addEventListener('click', () => {
+    filters.forEach(input => { input.checked = false; });
     if (search) search.value = '';
     update();
-    search?.focus();
-  });
+    if (button.closest('[data-resource-empty]')) {
+      grid.querySelector('.resource-card:not([hidden]) h3 a')?.focus({preventScroll: true});
+    }
+  }));
+
+  const fitPanel = () => { if (panel) panel.open = !narrow.matches; };
+  fitPanel();
+  narrow.addEventListener('change', fitPanel);
+  root.querySelectorAll('[data-resource-tools]').forEach(element => { element.hidden = false; });
+  root.dataset.enhanced = 'true';
   update();
 })();
