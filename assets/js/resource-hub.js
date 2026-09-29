@@ -14,6 +14,8 @@
   const clear = root.querySelector('[data-resource-clear]');
   const panel = root.querySelector('[data-resource-panel]');
   const narrow = window.matchMedia('(max-width: 760px)');
+  const twoColumns = window.matchMedia('(max-width: 1100px)');
+  const oneColumn = window.matchMedia('(max-width: 540px)');
   const normalize = value => value.toLocaleLowerCase().replace(/[-–—]/g, ' ');
   const items = cards.map((card, index) => ({
     card,
@@ -31,13 +33,19 @@
       const dateOrder = a.published.localeCompare(b.published);
       return (sort === 'oldest' ? dateOrder : -dateOrder) || a.index - b.index;
     });
-    let visible = 0;
+    const visibleCards = [];
     ordered.forEach(item => {
       const matches = (!selected.size || selected.has(item.topic)) && terms.every(term => item.text.includes(term));
       item.card.hidden = !matches;
-      if (matches) visible++;
+      item.card.classList.remove('resource-card--wide');
+      if (matches) visibleCards.push(item.card);
       grid.append(item.card);
     });
+    const visible = visibleCards.length;
+    const columns = oneColumn.matches ? 1 : twoColumns.matches ? 2 : 3;
+    if (columns > 1 && visible % columns === 1) {
+      visibleCards[visible - 1].classList.add('resource-card--wide');
+    }
     sortButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.resourceSort === sort)));
     if (count) count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guides'}`;
     if (empty) empty.hidden = visible !== 0;
@@ -67,6 +75,8 @@
   const fitPanel = () => { if (panel) panel.open = !narrow.matches; };
   fitPanel();
   narrow.addEventListener('change', fitPanel);
+  twoColumns.addEventListener('change', update);
+  oneColumn.addEventListener('change', update);
   root.querySelectorAll('[data-resource-tools]').forEach(element => { element.hidden = false; });
   root.dataset.enhanced = 'true';
   update();
