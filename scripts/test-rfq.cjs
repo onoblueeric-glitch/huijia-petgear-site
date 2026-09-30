@@ -30,6 +30,37 @@ test('SMTP failure does not return false success or private diagnostics', async 
   assert.equal(result.body.ok, false);
   assert.ok(!JSON.stringify(result).includes('secret'));
 });
+test('private BCC is server-controlled and absent from responses and delivered headers', async () => {
+  const nodemailer = require('nodemailer');
+  const privateRecipient = 'internal-copy@example.com';
+  let sent;
+  const h = createHandler({ env: { ...env, RFQ_BCC_EMAIL: privateRecipient }, send: async message => { sent = message; } });
+  const result = await invoke(h, request({ bcc: 'attacker@example.com', cc: 'attacker@example.com', to: 'attacker@example.com' }));
+  assert.equal(result.status, 200);
+  assert.equal(sent.to, 'andy@huijiapetgear.com');
+  assert.equal(sent.bcc, privateRecipient);
+  assert.equal(sent.cc, undefined);
+  assert.ok(!JSON.stringify(result).includes(privateRecipient));
+  assert.deepEqual((await invoke(h, { method: 'GET' })).body, { available: true });
+  // Capture SMTP's default MIME output without a network connection. The built-in
+  // stream transport deliberately retains Bcc for archival use, unlike SMTP.
+  const composed = await nodemailer.createTransport({
+    name: 'capture', version: '1',
+    send(mail, done) {
+      mail.message.build((error, message) => done(error, { envelope: mail.message.getEnvelope(), message }));
+    }
+  }).sendMail(sent);
+  assert.deepEqual(composed.envelope.to, ['andy@huijiapetgear.com', privateRecipient]);
+  assert.ok(!composed.message.toString().includes(privateRecipient));
+  assert.ok(!/^Bcc:/im.test(composed.message.toString()));
+});
+test('invalid BCC configuration never silently skips the private copy', async () => {
+  for (const bcc of ['invalid', 'internal@example.com\r\nCc: attacker@example.com', 'one@example.com,two@example.com']) {
+    const h = createHandler({ env: { ...env, RFQ_BCC_EMAIL: bcc }, send: () => assert.fail('must not send') });
+    assert.deepEqual((await invoke(h, { method: 'GET' })).body, { available: false });
+    assert.equal((await invoke(h, request())).status, 503);
+  }
+});
 test('rejects foreign origins, malformed fields, header injection and oversize content', async () => {
   const h = createHandler({ env, send: () => assert.fail('must not send') });
   const foreign = request(); foreign.headers.origin = 'https://example.org';
