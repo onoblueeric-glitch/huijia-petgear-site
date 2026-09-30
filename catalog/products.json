@@ -1608,7 +1608,7 @@
     ],
     "sku": "HJ-019",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -3175,7 +3175,7 @@
     ],
     "sku": "HJ-034",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -4691,7 +4691,7 @@
     ],
     "sku": "HJ-049",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -5675,7 +5675,7 @@
     ],
     "sku": "HJ-060",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -6438,7 +6438,7 @@
     ],
     "sku": "HJ-070",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -6504,7 +6504,7 @@
     ],
     "sku": "HJ-071",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -6628,7 +6628,7 @@
     ],
     "sku": "HJ-073",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -8309,7 +8309,7 @@
     ],
     "sku": "HJ-097",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
@@ -8637,7 +8637,7 @@
     ],
     "sku": "HJ-098",
     "unit": "pcs",
-    "moq": "Confirm by quotation",
+    "moq": "From 100 pcs",
     "families": [
       "a"
     ],
