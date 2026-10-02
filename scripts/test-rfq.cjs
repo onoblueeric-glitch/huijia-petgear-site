@@ -13,6 +13,17 @@ test('missing credentials advertise offline mode and never report delivery', asy
   assert.deepEqual((await invoke(h, { method: 'GET' })).body, { available: false });
   assert.equal((await invoke(h, request())).status, 503);
 });
+test('email and requirements suffice; optional contact fields and name can be omitted', async () => {
+  let sent;
+  const h = createHandler({ env, send: async message => { sent = message; } });
+  const result = await invoke(h, request({ name: undefined, page: '/custom-dog-leash' }));
+  assert.equal(result.status, 200);
+  assert.ok(sent.text.includes('page: /custom-dog-leash'));
+  assert.equal((await invoke(h, request({ requirements: '  ' }))).status, 400);
+  assert.equal((await invoke(h, request({ email: '' }))).status, 400);
+  assert.equal((await invoke(h, request({ page: '/?email=private@example.com' }))).status, 400);
+  assert.equal((await invoke(h, request({ page: 'https://other.example/' }))).status, 400);
+});
 test('server controls recipient; buyer email becomes reply-to and content stays plain text', async () => {
   let sent;
   const h = createHandler({ env, send: async message => { sent = message; } });

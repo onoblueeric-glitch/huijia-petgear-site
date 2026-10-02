@@ -1,6 +1,21 @@
 (() => {
   "use strict";
   const config = window.HUIJIA_SITE_CONFIG || {};
+  // First-party, cookie-free page views. Never include form fields or URL queries.
+  if (window.location.hostname === "www.huijiapetgear.com") {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va("beforeSend", (event) => {
+      const url = new URL(event.url);
+      url.search = "";
+      url.hash = "";
+      return { ...event, url: url.toString() };
+    });
+    const analytics = document.createElement("script");
+    analytics.defer = true;
+    analytics.src = "/_vercel/insights/script.js";
+    document.head.append(analytics);
+  }
+
   const menu = document.getElementById("mainNav");
   const mobileToggle = document.getElementById("mobileToggle");
   const modal = document.getElementById("quoteModal");
@@ -206,7 +221,7 @@
   };
   const inquiryText = (data) => [
     `Product: ${data.product || "Dog walking gear"}`,
-    `Name: ${data.name || ""}`,
+    `Product page: https://www.huijiapetgear.com${data.page || "/"}`,
     `Business Email: ${data.email || ""}`,
     `Phone / WhatsApp: ${data.phone || ""}`,
     `Company: ${data.company || ""}`,
@@ -253,7 +268,7 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (form.dataset.submitting === "true" || !form.reportValidity()) return;
-      const data = serialize(form);
+      const data = { ...serialize(form), page: window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/" };
       const status = form.querySelector("[data-form-status]");
       const submit = form.querySelector('button[type="submit"]');
       form.dataset.submitting = "true";
