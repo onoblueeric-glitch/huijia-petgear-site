@@ -492,7 +492,7 @@
           "40–65 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "Reference neck-adjustment ranges: confirm the closed measuring points and usable limits on the approved collar. Width and an M/L/XL label do not establish a dog-weight or finished-product load rating."
     },
     "slug": "wholesale-solid-nylon-quick-release-dog-collar",
     "variants": [
@@ -556,7 +556,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-006?",
-        "answer": "M: webbing width 1.5 cm, neck adjustment 30–40 cm. L: webbing width 2 cm, neck adjustment 33–50 cm. XL: webbing width 2.5 cm, neck adjustment 40–65 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "M: webbing width 1.5 cm, neck adjustment 30–40 cm. L: webbing width 2 cm, neck adjustment 33–50 cm. XL: webbing width 2.5 cm, neck adjustment 40–65 cm. Reference neck-adjustment ranges: confirm the closed measuring points and usable limits on the approved collar. Width and an M/L/XL label do not establish a dog-weight or finished-product load rating."
+      },
+      {
+        "question": "Can I select this collar using only a size label or dog weight?",
+        "answer": "Use the actual neck-adjustment range: M is 30–40 cm, L is 33–50 cm and XL is 40–65 cm, with respective webbing widths of 1.5, 2 and 2.5 cm. Follow the approved measuring method and fit instructions. A size label or dog weight alone does not define the fit or a strength rating."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -568,7 +572,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -4633,7 +4637,7 @@
           "55–80 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "The source labels these values as harness adjustment. Confirm separate neck and chest measuring points, usable ranges and fit for each size; do not apply the single range to both body measurements."
     },
     "slug": "wholesale-cartoon-y-shape-printed-dog-harness",
     "variants": [
@@ -4763,7 +4767,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-041?",
-        "answer": "M: webbing width 1.5 cm, harness adjustment 35–50 cm. L: webbing width 2 cm, harness adjustment 45–65 cm. XL: webbing width 2.5 cm, harness adjustment 55–80 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "M: webbing width 1.5 cm, harness adjustment 35–50 cm. L: webbing width 2 cm, harness adjustment 45–65 cm. XL: webbing width 2.5 cm, harness adjustment 55–80 cm. The source labels these values as harness adjustment. Confirm separate neck and chest measuring points, usable ranges and fit for each size; do not apply the single range to both body measurements."
+      },
+      {
+        "question": "Does the listed harness adjustment define both neck and chest fit?",
+        "answer": "No. The source provides one harness-adjustment range per size: M 35–50 cm, L 45–65 cm and XL 55–80 cm. Confirm what each range measures and request separate neck and chest fit requirements before approving retail sizing. The Y-shape name alone does not establish the fit."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -4775,7 +4783,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -5378,7 +5386,7 @@
           "130 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "The 130 cm figure is the overall lead reference, not a neck-fit range. Confirm length endpoints, usable sliding-loop range, stopper operation, rope composition and finished-assembly requirements."
     },
     "slug": "wholesale-adjustable-rope-slip-lead",
     "variants": [
@@ -5424,11 +5432,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-046?",
-        "answer": "XS: width / diameter 0.4 cm, length 130 cm. S: width / diameter 0.6 cm, length 130 cm. M: width / diameter 0.8 cm, length 130 cm. L: width / diameter 1 cm, length 130 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "XS: width / diameter 0.4 cm, length 130 cm. S: width / diameter 0.6 cm, length 130 cm. M: width / diameter 0.8 cm, length 130 cm. L: width / diameter 1 cm, length 130 cm. The 130 cm figure is the overall lead reference, not a neck-fit range. Confirm length endpoints, usable sliding-loop range, stopper operation, rope composition and finished-assembly requirements."
       },
       {
         "question": "Does this slip lead need a separate collar?",
-        "answer": "The pictured one-piece rope construction incorporates a sliding neck loop, stopper and handle loop. The listed lead length is 130 cm, with diameters from 0.4 to 1 cm. Confirm the usable loop range and stopper operation on the sample; the overall lead length is not a neck-fit measurement."
+        "answer": "The pictured one-piece rope construction incorporates a sliding neck loop, stopper and handle loop. The listed lead length is 130 cm, with diameters from 0.4 to 1 cm. Confirm the usable loop range, stopper operation and rope/end-connection specification on the sample. Overall lead length is not a neck-fit measurement or a strength rating."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -5440,7 +5448,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -5666,7 +5674,7 @@
           "80 cm"
         ]
       ],
-      "note": "Source specifies four-layer double-pin versions. Confirm the layer count and buckle-hole fit range for the selected variant."
+      "note": "The 70 and 80 cm figures are stated overall lengths, not confirmed neck-fit ranges. Confirm buckle-hole positions, usable closed adjustment and the supplied four-layer double-pin construction for the selected variant."
     },
     "slug": "wholesale-wide-double-pin-nylon-dog-collar",
     "variants": [
@@ -5700,11 +5708,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-048?",
-        "answer": "4XL: width 4 cm, stated length 70 cm. 5XL: width 5 cm, stated length 80 cm. Source specifies four-layer double-pin versions. Confirm the layer count and buckle-hole fit range for the selected variant."
+        "answer": "4XL: width 4 cm, stated length 70 cm. 5XL: width 5 cm, stated length 80 cm. The 70 and 80 cm figures are stated overall lengths, not confirmed neck-fit ranges. Confirm buckle-hole positions, usable closed adjustment and the supplied four-layer double-pin construction for the selected variant."
       },
       {
         "question": "Does a 70 cm or 80 cm collar length equal the usable neck size?",
-        "answer": "No verified neck-fit range is provided. The source lists 4XL at 4 cm wide by 70 cm long and 5XL at 5 cm wide by 80 cm long, with four-layer double-pin versions. Confirm buckle-hole positions, usable adjustment and layer count for the selected design."
+        "answer": "No verified neck-fit range is provided. The source lists 4XL at 4 cm wide by 70 cm long and 5XL at 5 cm wide by 80 cm long, with four-layer double-pin versions. Confirm buckle-hole positions, usable adjustment and layer count for the selected design. Width and layer count alone do not establish the strength of the finished collar."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -5716,7 +5724,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -5846,7 +5854,7 @@
           "120 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "Select by the neck and chest ranges together. Every listed size pairs with a 120 cm leash; confirm fit, measuring points, tolerances and the included pieces on the approved packed sample."
     },
     "slug": "wholesale-art-print-mesh-dog-harness-and-leash-set",
     "variants": [
@@ -5940,11 +5948,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-050?",
-        "answer": "XS: neck adjustment 26–36 cm, chest adjustment 25–50 cm, leash length 120 cm. S: neck adjustment 30–45 cm, chest adjustment 35–60 cm, leash length 120 cm. M: neck adjustment 35–50 cm, chest adjustment 40–71 cm, leash length 120 cm. L: neck adjustment 40–60 cm, chest adjustment 55–83 cm, leash length 120 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "XS: neck adjustment 26–36 cm, chest adjustment 25–50 cm, leash length 120 cm. S: neck adjustment 30–45 cm, chest adjustment 35–60 cm, leash length 120 cm. M: neck adjustment 35–50 cm, chest adjustment 40–71 cm, leash length 120 cm. L: neck adjustment 40–60 cm, chest adjustment 55–83 cm, leash length 120 cm. Select by the neck and chest ranges together. Every listed size pairs with a 120 cm leash; confirm fit, measuring points, tolerances and the included pieces on the approved packed sample."
       },
       {
         "question": "How do the neck, chest and leash measurements work together?",
-        "answer": "Select the harness using both neck and chest measurements. XS is listed at 26–36 cm neck and 25–50 cm chest, while L is 40–60 cm neck and 55–83 cm chest; S and M are in the table. Every listed size includes a 120 cm leash. Confirm fit and print placement with the sample."
+        "answer": "Select the harness using both neck and chest ranges for the same size. For example, M is listed at 35–50 cm neck and 40–71 cm chest; the other sizes are in the table. Every listed size includes a 120 cm leash. Confirm fit, artwork and included pieces on the packed sample; an M label is not interchangeable with another model’s M."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -5956,7 +5964,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -7237,7 +7245,7 @@
           "45–65 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "The source labels these values as harness adjustment. Confirm separate neck and chest measuring points and usable ranges on the fit sample. The H-style construction does not establish an escape-proof rating."
     },
     "slug": "custom-printed-h-style-escape-resistant-dog-harness",
     "variants": [
@@ -7295,11 +7303,11 @@
       },
       {
         "question": "What reference dimensions are listed for H-T01?",
-        "answer": "S: webbing width 1 cm, harness adjustment 30–40 cm. M: webbing width 1.5 cm, harness adjustment 35–50 cm. L: webbing width 2 cm, harness adjustment 45–65 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "S: webbing width 1 cm, harness adjustment 30–40 cm. M: webbing width 1.5 cm, harness adjustment 35–50 cm. L: webbing width 2 cm, harness adjustment 45–65 cm. The source labels these values as harness adjustment. Confirm separate neck and chest measuring points and usable ranges on the fit sample. The H-style construction does not establish an escape-proof rating."
       },
       {
         "question": "Which specifications should I send for a printed H-style harness quote?",
-        "answer": "Send the H-T01 option code for Gradient, Camouflage, Cloud, Patchwork, Geometric or Bear, then the quantity by S, M and L. Reference widths are 1, 1.5 and 2 cm, with harness adjustment ranges of 30–40, 35–50 and 45–65 cm. Confirm the measuring points on the fit sample."
+        "answer": "Send the H-T01 option code and quantity by S, M and L. Reference widths are 1, 1.5 and 2 cm, with stated harness-adjustment ranges of 30–40, 35–50 and 45–65 cm. Request separate neck and chest measuring points and review the fit sample. The construction does not establish an escape-proof performance guarantee."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -7311,7 +7319,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -8095,7 +8103,7 @@
           "200 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "The 200 cm figure is a reference length, not a complete adjustment range. Confirm the shortest and longest usable lengths, measurement endpoints, webbing thickness and adjuster grip on the selected sample."
     },
     "material": "Polyester",
     "slug": "wholesale-adjustable-2-m-printed-dog-leash",
@@ -8141,11 +8149,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-072?",
-        "answer": "One size: width / diameter 2.5 cm, length 200 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "One size: width / diameter 2.5 cm, length 200 cm. The 200 cm figure is a reference length, not a complete adjustment range. Confirm the shortest and longest usable lengths, measurement endpoints, webbing thickness and adjuster grip on the selected sample."
       },
       {
         "question": "Does the 2 m printed leash have a confirmed adjustment range?",
-        "answer": "The listed construction is polyester printed webbing with a length adjuster, loop handle and metal clip. The reference dimensions are 2.5 cm by 200 cm, but no minimum adjusted length is stated. Ask for the usable adjustment range and measuring method with your selected print."
+        "answer": "The listed construction is polyester printed webbing with a length adjuster, loop handle and metal clip. The reference dimensions are 2.5 cm by 200 cm, but no minimum adjusted length is stated. Ask for both usable length limits and the measuring method, then review adjuster grip and print placement with your selected sample."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -8157,7 +8165,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -9865,7 +9873,7 @@
           "44–54 cm"
         ]
       ],
-      "note": "Choose by actual chest measurement and fit sample. A breed or body-weight estimate is not a substitute for measuring the dog."
+      "note": "Only chest-adjustment ranges are supplied. Confirm the neck opening, fastening and usable fit on the approved sample. Breed, body weight and an XXS/XS/S label do not supply missing dimensions."
     },
     "slug": "wholesale-breathable-outdoor-vest-dog-harness",
     "variants": [
@@ -9893,7 +9901,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-093?",
-        "answer": "XXS: chest adjustment 24–34 cm. XS: chest adjustment 34–44 cm. S: chest adjustment 44–54 cm. Choose by actual chest measurement and fit sample. A breed or body-weight estimate is not a substitute for measuring the dog."
+        "answer": "XXS: chest adjustment 24–34 cm. XS: chest adjustment 34–44 cm. S: chest adjustment 44–54 cm. Only chest-adjustment ranges are supplied. Confirm the neck opening, fastening and usable fit on the approved sample. Breed, body weight and an XXS/XS/S label do not supply missing dimensions."
+      },
+      {
+        "question": "Which measurements are still needed beyond the chest range?",
+        "answer": "The listed chest ranges are XXS 24–34 cm, XS 34–44 cm and S 44–54 cm. Ask for the neck opening and fastening details and review usable fit on the sample before finalizing a complete retail size chart. A small-dog breed label or weight estimate does not supply those missing dimensions."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -9905,7 +9917,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -10084,7 +10096,7 @@
           "60 cm"
         ]
       ],
-      "note": "Overall length only. Confirm the usable neck adjustment and buckle configuration."
+      "note": "Overall collar lengths only, not neck-adjustment ranges. Confirm the usable closed fit range and buckle configuration for each reference. Reflective details do not establish a certified visibility level."
     },
     "slug": "wholesale-reflective-nylon-metal-buckle-dog-collar",
     "variants": [
@@ -10136,11 +10148,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-095?",
-        "answer": "1: width 2.5 cm, stated collar length 40 cm. 2: width 2.5 cm, stated collar length 50 cm. 3: width 2.5 cm, stated collar length 60 cm. Overall length only. Confirm the usable neck adjustment and buckle configuration."
+        "answer": "1: width 2.5 cm, stated collar length 40 cm. 2: width 2.5 cm, stated collar length 50 cm. 3: width 2.5 cm, stated collar length 60 cm. Overall collar lengths only, not neck-adjustment ranges. Confirm the usable closed fit range and buckle configuration for each reference. Reflective details do not establish a certified visibility level."
       },
       {
         "question": "Are the 40, 50 and 60 cm collar figures neck-adjustment ranges?",
-        "answer": "No. These are stated overall collar lengths, all 2.5 cm wide. Confirm the usable neck-adjustment range and metal quick-release buckle configuration for each reference before assigning retail sizes."
+        "answer": "No. These are stated overall collar lengths, all 2.5 cm wide. Confirm the usable neck-adjustment range and metal quick-release buckle configuration for each reference before assigning retail sizes. Also specify the reflective material and any required visibility assessment; the product name is not a certified visibility rating."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -10152,7 +10164,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
@@ -10189,7 +10201,7 @@
           "120 cm"
         ]
       ],
-      "note": "Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+      "note": "Use the paired neck and chest ranges for each harness size. S pairs with a 0.6 cm leash and M with a 0.8 cm leash, both 120 cm long. Confirm fit, included pieces and the packed-set specification."
     },
     "slug": "wholesale-floral-h-style-dog-harness-and-leash-set",
     "variants": [
@@ -10241,7 +10253,11 @@
       },
       {
         "question": "What reference dimensions are listed for HJ-096?",
-        "answer": "S: neck adjustment 14–22 cm, chest adjustment 22–32 cm, leash diameter 0.6 cm, leash length 120 cm. M: neck adjustment 22–32 cm, chest adjustment 32–50 cm, leash diameter 0.8 cm, leash length 120 cm. Dimensions are reference measurements. Confirm the measuring points, fit and tolerances with your approved sample."
+        "answer": "S: neck adjustment 14–22 cm, chest adjustment 22–32 cm, leash diameter 0.6 cm, leash length 120 cm. M: neck adjustment 22–32 cm, chest adjustment 32–50 cm, leash diameter 0.8 cm, leash length 120 cm. Use the paired neck and chest ranges for each harness size. S pairs with a 0.6 cm leash and M with a 0.8 cm leash, both 120 cm long. Confirm fit, included pieces and the packed-set specification."
+      },
+      {
+        "question": "What is included in the small floral H-style set?",
+        "answer": "The S reference pairs a harness with 14–22 cm neck and 22–32 cm chest adjustment with a 0.6 cm diameter, 120 cm leash. M uses 22–32 cm neck and 32–50 cm chest adjustment with a 0.8 cm diameter, 120 cm leash. Confirm the fit, matching option, included pieces and shared retail packaging before approving each set SKU."
       },
       {
         "question": "Can you add our logo and retail packaging?",
@@ -10253,7 +10269,7 @@
       },
       {
         "question": "How do I request a sample and bulk quotation?",
-        "answer": "Send the selected product and option code, sizes, quantity, logo or packaging requirements, target market and delivery date. Samples normally take 7–15 working days and bulk production typically takes 25–35 days after sample approval, subject to materials and order quantity."
+        "answer": "Send the selected product and option code, quantities by size/color, target market, logo or packaging requirements and required arrival date. Sample timing and bulk production are confirmed after specification and quantity review; agree sample approval, dispatch and transport separately in the quotation."
       }
     ]
   },
