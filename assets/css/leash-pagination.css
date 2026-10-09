@@ -1,0 +1,8 @@
+.leash-pagination{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:32px 0 8px}
+.leash-pagination a,.leash-pagination button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px 16px;border:1px solid #d4dcd5;border-radius:4px;background:#fff;color:inherit;font:inherit;text-decoration:none;cursor:pointer}
+.leash-pagination [aria-current="page"]{background:#233e31;border-color:#233e31;color:#fff;font-weight:600}
+.leash-pagination a:hover,.leash-pagination button:hover{border-color:#233e31}
+.leash-pagination a:focus-visible,.leash-pagination button:focus-visible{outline:2px solid #233e31;outline-offset:3px}
+.leash-filter-status{font-size:14px;line-height:1.5;margin:16px 0;color:#384b3c}
+.leash-pagination[hidden],.leash-filter-status[hidden]{display:none}
+@media(max-width:480px){.leash-pagination{gap:6px}.leash-pagination a,.leash-pagination button{padding:10px 12px}}
