@@ -1,3 +1,11 @@
+## 2026-10-09 — Leash procurement content
+
+- Expanded the existing leash guide with logo placement approval views.
+- Added a leash sample approval framework and a clearly labeled HJ-072 quotation exercise to existing buyer guides.
+- Added SKU-specific sample briefs to HJ-007, HJ-056 and HJ-072, and contextual category/guide links.
+- Preserved layouts, published reference dimensions and MOQ; no invented measurements, test results or customer cases.
+- Updated modified dates and sitemap for the eight affected pages.
+
 # Changelog
 
 ## 2.0.0 — Core positioning update
