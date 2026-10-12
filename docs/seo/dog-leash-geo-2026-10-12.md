@@ -1,6 +1,6 @@
 # Dog leash article release and GEO tracking record
 
-Status: DRAFT — pending SWA acceptance. No production publication in this change.
+Status: RELEASE AUTHORIZED by the user on 2026-10-12 after disclosure that SWA was unavailable. SWA acceptance remains pending; publication is not evidence of score acceptance or GEO improvement.
 Research date: 2026-10-12. Base commit: 872d4c2bc36d9ef13e27fea86496dcba47a21550.
 
 ## Content mapping
@@ -42,13 +42,13 @@ After publication, collect the same set weekly and review a 28-day window, keepi
 
 ## Release gate
 
-All three article drafts: SWA overall/readability/SEO/originality/tone = NOT RUN. Threshold inherited from semrush-seo: 8.9/10. Do not merge or promote production until acceptance is documented, or the user explicitly changes the requirement.
+All three article drafts: SWA overall/readability/SEO/originality/tone = NOT RUN. Threshold inherited from semrush-seo: 8.9/10. The user explicitly instructed “上线” after the pending SWA status was disclosed, authorizing this release before SWA acceptance. Keep the pending score status visible and complete the check when access is available.
 
 1. Enter each complete article, including author, tables, links and real image alt text; verify import completeness.
 2. Use the fixed inputs above. Record the original word count and targets. Do not lower targets or change keywords to inflate scores.
 3. Record overall score and each of the four dimensions. Report originality quota/unavailability separately.
 4. Resolve material issues and check the full rendered draft, desktop and mobile. Product facts must remain tied to existing catalog records/confirmed business terms.
-5. Merge only after acceptance. Verify production commit, final URLs, metadata, images, links and sitemap, then reimport the published URLs and record the repeat check.
+5. For this user-authorized release, verify production commit, final URLs, metadata, images, links and sitemap. Reimport the published URLs when SWA access is available and record the check.
 6. Update the existing URL/keyword/GEO inventory only for accepted, published changes, preserving its original row identities and country mappings.
 
 ## Technical verification
